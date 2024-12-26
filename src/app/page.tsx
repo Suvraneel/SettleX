@@ -1,41 +1,24 @@
-"use client";
-import {FloatingNav} from "@components/ui/floating-navbar";
-import {BrandGithub, BrandSlack, BrandTelegram, BrandX, ChevronRight} from "@mynaui/icons-react";
+import {ChevronRight} from "@mynaui/icons-react";
 import Spline from "@splinetool/react-spline";
 import Image from "next/image";
-import {useTheme} from "next-themes";
-
-const navItems = [
-    {name: "X", link: "/", icon: <BrandX className="h-5 w-5"/>},
-    {name: "Telegram", link: "/", icon: <BrandTelegram className="h-5 w-5"/>},
-    {name: "Github", link: "/", icon: <BrandGithub className="h-5 w-5"/>},
-    {name: "Slack", link: "/", icon: <BrandSlack className="h-5 w-5"/>},
-];
+import Link from "next/link";
 
 export default function Home() {
-    const {resolvedTheme} = useTheme();
-    console.log("Current theme:", resolvedTheme);
     return (
         <div
-            className="h-screen overflow-hidden grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
-            <main className="flex flex-col relative gap-8 row-start-2 items-center sm:items-start">
-                <Image src={resolvedTheme === 'dark' ? 'SettleXClrInv.svg' : './SettleXClr.svg'}
-                       alt={'SettleX-logo'}
-                       width={200} height={200}
-                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                       className='ml-10 mt-20 sm:mt-3 md:mt-0 md:ml-5 h-20 w-20 md:h-40 md:w-40 self-start'
-                />
-                <FloatingNav navItems={navItems}/>
+            className="h-screen w-screen overflow-hidden flex justify-evenly items-center p-5 min-h-screen font-[family-name:var(--font-geist-sans)]">
+            <main
+                className="w-full h-full flex flex-col relative items-center dark:bg-dot-white/[0.2] bg-dot-black/[0.2]">
                 <div
-                    className="h-2/3 w-full dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative flex items-start justify-start px-10">
-                    <div className="w-full md:w-1/2 flex flex-col items-start">
+                    className="mt-40 h-full md:h-2/3 w-full relative flex items-start justify-start px-10">
+                    <div className="w-full lg:w-1/2 h-full flex flex-col justify-evenly items-start">
                             <span className="text-2xl capitalize text-cyan-300 max-[410px]:text-xl xl:text-4xl"
                                   aria-label="Encrypted dynamic text">
                                 Encrypted <span className="text-black dark:text-white" aria-live="polite"
                                                 role="text">transfers</span>
                             </span>
-                        <h1 className="mt-4 text-3xl leading-snug md:text-4xl xl:text-5xl 2xl:text6xl">
-                            The Modular<br/>
+                        <h1 className="mt-4 text-2xl leading-snug md:text-4xl xl:text-5xl 2xl:text6xl">
+                            The Modular{" "}<br className="hidden sm:block"/>
                             <span className="text-black dark:text-white" aria-live="polite"
                                   role="text">Interoperability</span><br/>
                             Hall
@@ -44,7 +27,7 @@ export default function Home() {
                             SettleX is the first FhEVM Clearing Layer, solving fragmentation in modular blockchains
                             while providing privacy for users. non-EVM networks.
                         </p>
-                        <p className="mt-8 flex items-center gap-4 sm:gap-8 text-base text-black dark:text-white/70 max-[410px]:text-sm xl:text-xl"
+                        <p className="mt-5 sm:mt-10 md:mt-16 flex items-center gap-4 sm:gap-8 text-base text-black dark:text-white/70 max-[410px]:text-sm xl:text-xl"
                            aria-label="Powered by Union">
                             Powered by:
                             <span className="flex items-center gap-4 sm:gap-8">
@@ -58,27 +41,28 @@ export default function Home() {
                                     </a>
                                 </span>
                         </p>
-                        <div className="mt-16 flex items-center gap-8 max-[410px]:gap-2">
-                            <a href="mailto: settlexfoundation@gmail.com" target="_blank" rel="noopener noreferrer"
+                        <div
+                            className="mt-5 sm:mt-10 md:mt-16 flex flex-col sm:flex-row justify-start items-start gap-3 sm:gap-8 max-[410px]:gap-2">
+                            <Link href="mailto: settlexfoundation@gmail.com" target="_blank" rel="noopener noreferrer"
                                aria-label="Contact Us">
                                 <button
                                     className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md
-                                        text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring
+                                        text-xs sm:text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring
                                         disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0
-                                        bg-primary hover:bg-zinc-700 text-primary-foreground shadow hover:bg-primary/70 px-4 py-2 h-[38px]">
+                                        bg-primary hover:bg-zinc-400 text-primary-foreground shadow px-4 py-2">
                                     Contact Us
                                 </button>
-                            </a>
-                            <a aria-label="Join the waitlist" href="/join-waitlist">
+                            </Link>
+                            <Link aria-label="Join the waitlist" href="/waitlist">
                                 <button
                                     className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md
-                                        text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring
+                                        text-xs sm:text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring
                                         disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 group
-                                        bg-transparent shadow border border-cyan-300 text-black dark:text-white hover:bg-accent/30 hover:text-neutral-500 h-9 px-4 py-2">
+                                        bg-transparent shadow border border-cyan-300 text-black dark:text-white hover:bg-accent/40 hover:text-neutral-500 h-9 px-4 py-2">
                                     Join Waitlist<ChevronRight
                                     className="h-4 w-4 group-hover:translate-x-1 transition-transform"/>
                                 </button>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div
