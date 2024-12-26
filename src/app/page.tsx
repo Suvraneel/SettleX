@@ -2,7 +2,22 @@ import {ChevronRight} from "@mynaui/icons-react";
 import Spline from "@splinetool/react-spline";
 import Image from "next/image";
 import Link from "next/link";
+import TextScramble from "@components/ui/Scrambler";
 
+const encryptedSuffixPhrases = [
+    'Transfers',
+    'Swaps',
+    'Intents'
+];
+const phrases = [
+    'Interoperability',
+    'Confidentiality',
+    'High Performance',
+    'Scalability',
+    'Communication',
+    'Privacy',
+    'Liquidity'
+];
 export default function Home() {
     return (
         <div
@@ -14,13 +29,13 @@ export default function Home() {
                     <div className="w-full lg:w-1/2 h-full flex flex-col justify-evenly items-start">
                             <span className="text-2xl capitalize text-cyan-300 max-[410px]:text-xl xl:text-4xl"
                                   aria-label="Encrypted dynamic text">
-                                Encrypted <span className="text-black dark:text-white" aria-live="polite"
-                                                role="text">transfers</span>
+                                Encrypted <span className="text-black dark:text-white " aria-live="polite"
+                                                role="text"><TextScramble phrases={encryptedSuffixPhrases}/></span>
                             </span>
                         <h1 className="mt-4 text-2xl leading-snug md:text-4xl xl:text-5xl 2xl:text6xl">
                             The Modular{" "}<br className="hidden sm:block"/>
                             <span className="text-black dark:text-white" aria-live="polite"
-                                  role="text">Interoperability</span><br/>
+                                  role="text"><TextScramble phrases={phrases}/></span><br/>
                             Hall
                         </h1>
                         <p className="mt-4 text-base text-black dark:text-white/70 max-[410px]:text-sm sm:pr-4 xl:text-xl">
@@ -44,7 +59,7 @@ export default function Home() {
                         <div
                             className="mt-5 sm:mt-10 md:mt-16 flex flex-col sm:flex-row justify-start items-start gap-3 sm:gap-8 max-[410px]:gap-2">
                             <Link href="mailto: settlexfoundation@gmail.com" target="_blank" rel="noopener noreferrer"
-                               aria-label="Contact Us">
+                                  aria-label="Contact Us">
                                 <button
                                     className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md
                                         text-xs sm:text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring
