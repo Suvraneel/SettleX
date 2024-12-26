@@ -42,7 +42,7 @@ export default function Home() {
                             SettleX is the first FhEVM Clearing Layer, solving fragmentation in modular blockchains
                             while providing privacy for users. non-EVM networks.
                         </p>
-                        <p className="mt-5 sm:mt-8 md:mt-12 flex items-center gap-4 sm:gap-8 text-base text-black dark:text-white/70 max-[410px]:text-sm xl:text-xl"
+                        <p className="mt-3 sm:mt-5 md:mt-8 flex items-center gap-4 sm:gap-8 text-xs sm:text-sm md:text-lg xl:text-xl text-black dark:text-white/70"
                            aria-label="Powered by Union">
                             Powered by:
                             <span className="flex items-center gap-4 sm:gap-8">
@@ -51,13 +51,13 @@ export default function Home() {
                                        className="group">
                                         <Image alt="Union - Partner" draggable="false" loading="lazy" width="656"
                                                height="182" decoding="async" data-nimg="1"
-                                               className="h-6 w-auto select-none group-hover:opacity-70 sm:h-8 dark:filter-invert"
+                                               className="h-4 sm:h-7 md:h-8 w-auto select-none group-hover:opacity-70 dark:filter-invert"
                                                src="./union-logo-white.svg"/>
                                     </a>
                                 </span>
                         </p>
                         <div
-                            className="w-full h-full mt-5 sm:mt-8 md:mt-12 flex flex-col sm:flex-row justify-start items-start gap-3 sm:gap-8 max-[410px]:gap-2 relative">
+                            className="w-full h-full mt-3 sm:mt-5 md:mt-8 flex flex-col sm:flex-row justify-start items-start gap-3 sm:gap-8 max-[410px]:gap-2">
                             <Link href="mailto: settlexfoundation@gmail.com" target="_blank" rel="noopener noreferrer"
                                   aria-label="Contact Us">
                                 <button
@@ -78,8 +78,6 @@ export default function Home() {
                                     className="h-4 w-4 group-hover:translate-x-1 transition-transform"/>
                                 </button>
                             </Link>
-                            <p className="absolute right-0 bottom-0 text-xs text-white mt-4">© 2025 SettleX. All
-                                rights reserved.</p>
                         </div>
                     </div>
                     <div
@@ -89,6 +87,9 @@ export default function Home() {
                         />
                     </div>
                 </div>
+                <p className="absolute right-0 bottom-0 text-right text-xs text-neutral-500 mt-4">
+                    &copy; 2025 SettleX. All rights reserved.
+                </p>
             </main>
         </div>
     );
