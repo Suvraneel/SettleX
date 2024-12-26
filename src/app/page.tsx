@@ -27,22 +27,22 @@ export default function Home() {
                 <div
                     className="mt-40 h-full md:h-2/3 w-full relative flex items-start justify-start px-10">
                     <div className="w-full lg:w-1/2 h-full flex flex-col justify-evenly items-start">
-                            <span className="text-2xl capitalize text-cyan-300 max-[410px]:text-xl xl:text-4xl"
+                            <span className="text-2xl capitalize text-cyan-300 xl:text-4xl"
                                   aria-label="Encrypted dynamic text">
                                 Encrypted <span className="text-black dark:text-white " aria-live="polite"
                                                 role="text"><TextScramble phrases={encryptedSuffixPhrases}/></span>
                             </span>
-                        <h1 className="mt-4 text-2xl leading-snug md:text-4xl xl:text-5xl 2xl:text6xl">
-                            The Modular{" "}<br className="hidden sm:block"/>
+                        <h1 className="mt-4 text-base sm:text-2xl leading-snug md:text-4xl xl:text-5xl 2xl:text6xl">
+                            The Modular{" "}<br/>
                             <span className="text-black dark:text-white" aria-live="polite"
                                   role="text"><TextScramble phrases={phrases}/></span><br/>
                             Hall
                         </h1>
-                        <p className="mt-4 text-base text-black dark:text-white/70 max-[410px]:text-sm sm:pr-4 xl:text-xl">
+                        <p className="mt-4 text-xs sm:text-base md:text-xl text-black dark:text-white/70 sm:pr-4">
                             SettleX is the first FhEVM Clearing Layer, solving fragmentation in modular blockchains
                             while providing privacy for users. non-EVM networks.
                         </p>
-                        <p className="mt-5 sm:mt-10 md:mt-16 flex items-center gap-4 sm:gap-8 text-base text-black dark:text-white/70 max-[410px]:text-sm xl:text-xl"
+                        <p className="mt-5 sm:mt-8 md:mt-12 flex items-center gap-4 sm:gap-8 text-base text-black dark:text-white/70 max-[410px]:text-sm xl:text-xl"
                            aria-label="Powered by Union">
                             Powered by:
                             <span className="flex items-center gap-4 sm:gap-8">
@@ -57,7 +57,7 @@ export default function Home() {
                                 </span>
                         </p>
                         <div
-                            className="mt-5 sm:mt-10 md:mt-16 flex flex-col sm:flex-row justify-start items-start gap-3 sm:gap-8 max-[410px]:gap-2">
+                            className="w-full h-full mt-5 sm:mt-8 md:mt-12 flex flex-col sm:flex-row justify-start items-start gap-3 sm:gap-8 max-[410px]:gap-2 relative">
                             <Link href="mailto: settlexfoundation@gmail.com" target="_blank" rel="noopener noreferrer"
                                   aria-label="Contact Us">
                                 <button
@@ -78,6 +78,8 @@ export default function Home() {
                                     className="h-4 w-4 group-hover:translate-x-1 transition-transform"/>
                                 </button>
                             </Link>
+                            <p className="absolute right-0 bottom-0 text-xs text-white mt-4">© 2025 SettleX. All
+                                rights reserved.</p>
                         </div>
                     </div>
                     <div
