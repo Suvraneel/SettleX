@@ -81,9 +81,9 @@ export default function Home() {
                         </div>
                     </div>
                     <div
-                        className="w-2/3 md:w-7/12 h-1/3 md:h-full absolute right-0 items-center justify-center hidden lg:flex">
+                        className="w-2/3 md:w-7/12 h-1/3 md:h-full absolute right-0 items-center justify-center hidden lg:flex overflow-visible">
                         <Spline
-                            scene="https://prod.spline.design/L9ko-MFfr72kdSnS/scene.splinecode"
+                            scene="https://prod.spline.design/nUEenSI34SZGnWJ3/scene.splinecode"
                         />
                     </div>
                 </div>
