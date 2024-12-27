@@ -51,7 +51,7 @@ export default function Home() {
                                        className="group">
                                         <Image alt="Union - Partner" draggable="false" loading="lazy" width="656"
                                                height="182" decoding="async" data-nimg="1"
-                                               className="h-4 sm:h-7 md:h-8 w-auto select-none group-hover:opacity-70 dark:filter-invert"
+                                               className="h-4 sm:h-7 md:h-8 w-auto select-none group-hover:opacity-70 invert dark:invert-0"
                                                src="./union-logo-white.svg"/>
                                     </a>
                                 </span>
@@ -83,6 +83,7 @@ export default function Home() {
                     <div
                         className="w-2/3 md:w-7/12 h-1/3 md:h-full absolute right-0 items-center justify-center hidden lg:flex overflow-visible">
                         <Spline
+                            className="w-full h-full overflow-visible"
                             scene="https://prod.spline.design/nUEenSI34SZGnWJ3/scene.splinecode"
                         />
                     </div>

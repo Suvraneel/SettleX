@@ -15,7 +15,7 @@ import React, { useEffect, useRef } from 'react';
  */
 const TextScramble: React.FC<{ phrases: string[] }> = ({ phrases }) => {
     const elRef = useRef<HTMLDivElement>(null);
-    const chars = '!<>-_\\/[]{}—=+*^?#________';
+    const chars = '!<>-_\\/[]{}—=+*^$&@?#________';
     let resolve: () => void = () => {};
     let queue: { from: string, to: string, start: number, end: number, char?: string }[] = [];
     let frameRequest: number = 0;
