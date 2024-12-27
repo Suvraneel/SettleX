@@ -2,7 +2,6 @@
 import Image from "next/image";
 import {FloatingNav} from "@components/ui/floating-navbar";
 import {BrandGithub, BrandTelegram, BrandX, FileText} from "@mynaui/icons-react";
-import {useTheme} from "next-themes";
 import Link from "next/link";
 
 const navItems = [
@@ -14,14 +13,20 @@ const navItems = [
 ];
 
 function Header() {
-    const {resolvedTheme} = useTheme();
-    console.log("Current theme:", resolvedTheme);
     return (
         <>
             <Link href={"/"} passHref>
                 <div className="h-24 w-24 lg:h-40 lg:w-40 fixed top-24 sm:top-6 lg:top-5 left-12 self-start z-50">
-                    <Image src={resolvedTheme === "dark" ? "SettleXClrInv.svg" : "./SettleXClr.svg"}
-                           alt={"SettleX-logo"}
+                    <Image className="dark:hidden"
+                           src="./SettleXClr.svg"
+                           alt="SettleX-logo"
+                           fill loading="lazy" decoding="async"
+                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                           style={{objectFit: "contain"}}
+                    />
+                    <Image className="hidden dark:block"
+                           src="./SettleXClrInv.svg"
+                           alt="SettleX-logo"
                            fill loading="lazy" decoding="async"
                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                            style={{objectFit: "contain"}}

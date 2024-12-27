@@ -27,7 +27,7 @@ export default function Home() {
                 <div
                     className="mt-40 h-full md:h-2/3 w-full relative flex items-start justify-start px-10">
                     <div className="w-full lg:w-1/2 h-full flex flex-col justify-evenly items-start">
-                            <span className="text-2xl capitalize text-cyan-300 xl:text-4xl"
+                            <span className="text-lg md:text-2xl capitalize text-cyan-700 dark:text-cyan-300 xl:text-4xl"
                                   aria-label="Encrypted dynamic text">
                                 Encrypted <span className="text-black dark:text-white " aria-live="polite"
                                                 role="text"><TextScramble phrases={encryptedSuffixPhrases}/></span>
