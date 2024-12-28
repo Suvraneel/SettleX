@@ -35,9 +35,12 @@ export default function Waitlist() {
                     Join the Waitlist Today 🚀
                 </h1>
                 <div className="w-full h-full mx-auto max-w-sm flex flex-col gap-5">
-                    <p className="text-center text-sm text-foreground/70 sm:text-base">
+                    {/* <p className="text-center text-sm text-foreground/70 sm:text-base">
                         Sign up to be notified when our testnet launches and be among the first to try SettleX&#39;s
                         revolutionary technology.
+                    </p> */}
+                    <p className="text-center text-sm text-foreground/70 sm:text-base">
+                        Be the first to stay updated on all major announcements and gain early access to experience SettleX&#39;s groundbreaking technology.
                     </p>
                     <form
                         onSubmit={handleSubmit}
@@ -45,7 +48,7 @@ export default function Waitlist() {
                         aria-labelledby="waitlist-form"
                     >
                         <div className="flex flex-col gap-3">
-                            <label htmlFor="email" className="max-sm:text-sm">Email</label>
+                            <label htmlFor="email" className="max-sm:text-sm hidden">Email</label>
                             <input
                                 className="flex h-9 w-full rounded-md border border-input bg-white/50 dark:bg-black/50 px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm mb-4"
                                 id="email"
