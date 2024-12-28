@@ -15,7 +15,8 @@ import React, { useEffect, useRef } from 'react';
  */
 const TextScramble: React.FC<{ phrases: string[] }> = ({ phrases }) => {
     const elRef = useRef<HTMLDivElement>(null);
-    const chars = '!<>-_\\/[]{}—=+*^$&@?#________';
+    // const chars = '!<>-_\\/[]{}—=+*^$&@?#________';
+    const chars = '$_';
     let resolve: () => void = () => {};
     let queue: { from: string, to: string, start: number, end: number, char?: string }[] = [];
     let frameRequest: number = 0;
@@ -81,7 +82,7 @@ const TextScramble: React.FC<{ phrases: string[] }> = ({ phrases }) => {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-expect-error
             setText(phrases[counter]).then(() => {
-                setTimeout(next, 800);
+                setTimeout(next, 2000);
             });
             counter = (counter + 1) % phrases.length;
         };
