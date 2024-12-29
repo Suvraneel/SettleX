@@ -67,7 +67,7 @@ export const FloatingNav = ({
                     hover:bg-neutral-100 dark:hover:bg-neutral-900"
           >
             <span>Waitlist</span>
-            <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
+            <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-primary to-transparent  h-px" />
           </button>
         </Link>
       </motion.div>

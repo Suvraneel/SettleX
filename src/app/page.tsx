@@ -5,15 +5,7 @@ import Link from "next/link";
 import TextScramble from "@components/ui/Scrambler";
 
 const encryptedSuffixPhrases = ["Compute", "Transfers", "Swaps", "Intents"];
-const phrases = [
-  "Interoperability",
-  "Confidentiality",
-  "High Performance",
-  "Scalability",
-  "Communication",
-  "Privacy",
-  "Liquidity",
-];
+const layerPrefixPhrases = ["Interoperability", "Confidentiality", "Scalability", "Communication", "Privacy", "Liquidity", "Security"];
 export default function Home() {
   return (
     <div className="h-screen w-screen overflow-hidden flex justify-evenly items-center p-5 min-h-screen font-[family-name:var(--font-geist-sans)]">
@@ -40,7 +32,7 @@ export default function Home() {
                 aria-live="polite"
                 role="text"
               >
-                <TextScramble phrases={phrases} />
+                <TextScramble phrases={layerPrefixPhrases} />
               </span>
               <br />
               Layer
@@ -75,7 +67,7 @@ export default function Home() {
                 </a>
               </span>
             </p>
-            <div className="w-full h-full mt-3 sm:mt-5 md:mt-8 flex flex-col sm:flex-row justify-start items-start gap-3 sm:gap-8 max-[410px]:gap-2">
+            <div className="w-full h-full mt-3 sm:mt-5 md:mt-8 lg:mt-16 flex flex-col sm:flex-row justify-start items-start gap-3 sm:gap-8 max-[410px]:gap-2">
               <Link
                 href="mailto: settlexfoundation@gmail.com"
                 target="_blank"
@@ -86,7 +78,7 @@ export default function Home() {
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md
                                         text-xs sm:text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring
                                         disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0
-                                        bg-primary hover:bg-zinc-400 text-primary-foreground shadow px-4 py-2"
+                                        bg-primary hover:bg-cyan-400 text-primary-foreground shadow px-4 py-2"
                 >
                   Contact Us
                 </button>
@@ -96,7 +88,7 @@ export default function Home() {
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md
                                         text-xs sm:text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring
                                         disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 group
-                                        bg-transparent shadow border border-cyan-300 text-black dark:text-white hover:bg-accent/40 hover:text-neutral-500 h-9 px-4 py-2"
+                                        bg-transparent shadow border border-primary text-black dark:text-white hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2"
                 >
                   Join Waitlist
                   <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
