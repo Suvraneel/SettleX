@@ -5,8 +5,8 @@ import "@theme-toggles/react/css/Within.css"
 import {Within} from "@theme-toggles/react";
 
 function ThemeToggle() {
-    const {resolvedTheme, setTheme} = useTheme();
-    const [toggleIsDark, setToggleIsDark] = React.useState(resolvedTheme === 'dark');
+    const {setTheme} = useTheme();
+    const [toggleIsDark, setToggleIsDark] = React.useState(true);
 
     const toggleTheme = () => {
         setToggleIsDark(!toggleIsDark);
@@ -17,7 +17,7 @@ function ThemeToggle() {
     }, [toggleIsDark]);
 
     return (
-        <Within className='scale-150 transition-all duration-1000 ease-in-out'
+        <Within className='scale-150'
                 toggled={toggleIsDark} toggle={toggleTheme} duration={1000} placeholder={'Toggle Theme'}
                 aria-label={'Toggle Theme'} title={'Toggle Theme'} tabIndex={0}
                 type="button" onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}/>
