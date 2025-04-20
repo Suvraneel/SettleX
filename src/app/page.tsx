@@ -2,7 +2,7 @@ import { ChevronRight } from "@mynaui/icons-react";
 import Spline from "@splinetool/react-spline";
 import Image from "next/image";
 import Link from "next/link";
-import TextScramble from "@components/ui/Scrambler";
+import TextScramble from "@components/Scrambler";
 
 const encryptedSuffixPhrases = ["Compute", "Transfers", "Swaps", "Intents"];
 const layerPrefixPhrases = ["Interoperability", "Confidentiality", "Scalability", "Communication", "Privacy", "Liquidity", "Security"];
