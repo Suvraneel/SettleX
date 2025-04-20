@@ -8,8 +8,9 @@ import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@com
 import {Input} from "@components/ui/input";
 import {Button} from "@components/ui/button";
 import {ArrowLongDown, CreditCard} from "@mynaui/icons-react";
-import { motion, AnimatePresence } from "framer-motion";
+import {motion, AnimatePresence} from "framer-motion";
 import {tokens} from "@lib/tokens";
+import {NumericFormat} from "react-number-format";
 
 export default function Waitlist() {
     const {resolvedTheme} = useTheme();
@@ -17,7 +18,7 @@ export default function Waitlist() {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Add your form submission logic here
-        toast.success('Intent submitted successfully! 📧 ', {
+        toast.success('Intent created successfully! 📧 ', {
             position: "bottom-right",
             autoClose: 2000,
             hideProgressBar: false,
@@ -29,14 +30,13 @@ export default function Waitlist() {
             transition: Bounce,
         });
     };
-
     return (
         <div className="w-full h-full p-5 transition-all">
             <div
                 className="w-full h-full min-h-screen flex flex-col px-10 sm:px-20 pt-20 justify-start gap-5 sm:gap-12 items-center dark:bg-dot-white/[0.2] bg-dot-black/[0.2]">
                 <form onSubmit={handleSubmit}
                       className="bg-background text-foreground border rounded-xl flex w-full flex-col gap-3 p-3 sm:w-[30rem] md:p-6">
-                    <div className="flex flex-col gap-2 pb-2">
+                    <div className="flex flex-col gap-2 pb-2 px-4">
                         <div className="flex items-center justify-between">
                             <div className="text-[1.25rem] leading-[1.5] font-normal ">Bridge
                             </div>
@@ -54,8 +54,8 @@ export default function Waitlist() {
                         <div className={"py-3 px-4 flex items-center justify-between"}>
                             <div className="text-[0.875rem] leading-[1.428] font-normal ">Token</div>
                             <div className={"flex justify-end gap-2"}>
-                            <ArrowLongDown height={40} />
-                            <ComboBox label={"Select Token"} options={tokens} className={"w-[150px]"}/>
+                                <ArrowLongDown height={40}/>
+                                <ComboBox label={"Select Token"} options={tokens} className={"w-[150px]"}/>
                             </div>
                         </div>
                         <div
@@ -68,9 +68,11 @@ export default function Waitlist() {
                             <div className="text-[0.875rem] leading-[1.428] font-normal">Amount</div>
                             <div className="flex flex-col gap-2">
                                 <div className="flex justify-between gap-2">
-                                    <Input
+                                    <NumericFormat
+                                        allowNegative thousandSeparator="," customInput={Input} displayType="input"
                                         className="bg-transparent outline-none w-full text-[1.25rem] leading-[1.5] font-normal"
-                                        placeholder="0.00" type="text" inputMode="numeric"/>
+                                        placeholder="0.00" inputMode="numeric"
+                                    />
                                     <Button type="button"
                                             className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md
                                     text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring
@@ -110,10 +112,10 @@ export default function Waitlist() {
                     <AnimatePresence>
                         {receivingAddressInputShow && (
                             <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: "auto", opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.3 }}
+                                initial={{height: 0, opacity: 0}}
+                                animate={{height: "auto", opacity: 1}}
+                                exit={{height: 0, opacity: 0}}
+                                transition={{duration: 0.3}}
                                 className="px-4 py-1 rounded-xl space-y-3 group overflow-hidden"
                             >
                                 <div className="text-[0.875rem] leading-[1.428] font-normal">Receiving Address</div>
@@ -122,7 +124,6 @@ export default function Waitlist() {
                                         className="bg-transparent outline-none w-full text-[1.25rem] leading-[1.5] font-normal"
                                         placeholder="Enter Ethereum Wallet Address"
                                         type="text"
-                                        inputMode="numeric"
                                     />
                                 </div>
                             </motion.div>

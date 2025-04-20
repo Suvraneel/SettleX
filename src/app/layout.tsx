@@ -24,7 +24,7 @@ export default function RootLayout({children}: Readonly<{ children: ReactNode }>
     return (
         <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <NextThemeProvider attribute="class" defaultTheme="dark" storageKey='theme'>
+        <NextThemeProvider attribute="class" defaultTheme="dark" storageKey='theme' disableTransitionOnChange={false}>
             <Header/>
             {children}
         </NextThemeProvider>
