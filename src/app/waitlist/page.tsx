@@ -3,7 +3,7 @@ import {FormEvent, useState} from "react";
 import {ChevronRight} from "@mynaui/icons-react";
 import {Bounce, toast} from 'react-toastify';
 import {useTheme} from "next-themes";
-import Toaster from "@components/ui/Toaster";
+import Toaster from "@components/Toaster";
 
 export default function Waitlist() {
     const {resolvedTheme} = useTheme();
