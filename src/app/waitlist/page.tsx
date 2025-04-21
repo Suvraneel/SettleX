@@ -4,27 +4,55 @@ import {ChevronRight} from "@mynaui/icons-react";
 import {Bounce, toast} from 'react-toastify';
 import {useTheme} from "next-themes";
 import Toaster from "@components/Toaster";
+import {Input} from "@components/ui/input";
 
 export default function Waitlist() {
     const {resolvedTheme} = useTheme();
     const [email, setEmail] = useState("");
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Add your form submission logic here
-        toast.success('Email submitted successfully! 📧 ', {
-            position: "bottom-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: resolvedTheme || "dark",
-            transition: Bounce,
-        });
-        console.log("Email submitted:", email);
+
+        const payload = {
+            email,
+            timestamp: new Date().toISOString().replace("T", " ").replace("Z", ""),
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            userAgent: navigator.userAgent,
+            referrer: document.referrer || "direct"
+        };
+
+        try {
+            await fetch("/api/appscript", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload),
+            });
+
+            toast.success('Email submitted successfully! 📧 ', {
+                position: "bottom-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: resolvedTheme || "dark",
+                transition: Bounce,
+            });
+
+            setEmail(""); // Clear input
+            console.log("Form data submitted:", payload);
+        } catch (err) {
+            toast.error("Submission failed!", {
+                position: "bottom-right",
+                theme: resolvedTheme || "dark"
+            });
+            console.error("Submit error:", err);
+        }
     };
+
 
     return (
         <div className="w-full h-full p-5">
@@ -40,7 +68,8 @@ export default function Waitlist() {
                         revolutionary technology.
                     </p> */}
                     <p className="text-center text-sm text-foreground/70 sm:text-base">
-                        Be the first to stay updated on all major announcements and gain early access to experience SettleX&#39;s groundbreaking technology.
+                        Be the first to stay updated on all major announcements and gain early access to experience
+                        SettleX&#39;s groundbreaking technology.
                     </p>
                     <form
                         onSubmit={handleSubmit}
@@ -49,7 +78,7 @@ export default function Waitlist() {
                     >
                         <div className="flex flex-col gap-3">
                             <label htmlFor="email" className="max-sm:text-sm hidden">Email</label>
-                            <input
+                            <Input
                                 className="flex h-9 w-full rounded-md border border-input bg-white/50 dark:bg-black/50 px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm mb-4"
                                 id="email"
                                 required
@@ -57,6 +86,7 @@ export default function Waitlist() {
                                 aria-label="Email address"
                                 type="email"
                                 name="email"
+                                inputMode="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
