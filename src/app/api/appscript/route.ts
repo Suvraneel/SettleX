@@ -3,8 +3,11 @@ import {NextResponse} from 'next/server';
 export async function POST(request: Request) {
     try {
         const body = await request.json();
-
-        const res = await fetch(process.env.GOOGLE_SHEETS_APPSCRIPT_URL as string, {
+        const appScriptUrl = process.env.GOOGLE_SHEETS_APPSCRIPT_URL;
+        if (!appScriptUrl) {
+            throw new Error("Environment variable GOOGLE_SHEETS_APPSCRIPT_URL is not defined.");
+        }
+        const res = await fetch(appScriptUrl, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
