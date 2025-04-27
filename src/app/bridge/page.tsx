@@ -1,5 +1,5 @@
 "use client";
-import {FormEvent, useState} from "react";
+import {FormEvent, useEffect, useState} from "react";
 import {Bounce, toast} from 'react-toastify';
 import {useTheme} from "next-themes";
 import {ComboBox} from "@components/ComboBox";
@@ -8,13 +8,40 @@ import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@com
 import {Input} from "@components/ui/input";
 import {Button} from "@components/ui/button";
 import {ArrowLongDown, CreditCard} from "@mynaui/icons-react";
-import {motion, AnimatePresence} from "framer-motion";
+import {AnimatePresence, motion} from "framer-motion";
 import {tokens} from "@lib/tokens";
 import {NumericFormat} from "react-number-format";
+import {MarketDataResponse} from "@/types/uniblock-response";
 
-export default function Waitlist() {
+export default function Bridge() {
     const {resolvedTheme} = useTheme();
+    const [sourceChain, setSourceChain] = useState("");
+    const [destinationChain, setDestinationChain] = useState("");
+    const [token, setToken] = useState("");
+    const [amount, setAmount] = useState("");
     const [receivingAddressInputShow, setReceivingAddressInputShow] = useState(false);
+    const [marketData, setMarketData] = useState<MarketDataResponse | null>(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`/api/uniblock`, {
+                    method: 'GET',
+                    headers: {
+                        accept: 'application/json'
+                    }
+                });
+                const data = await response.json();
+                setMarketData(data);
+                console.log("Fetched market data:", data);
+            } catch (error) {
+                console.error("Error fetching market data:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Add your form submission logic here
@@ -49,19 +76,22 @@ export default function Waitlist() {
                         <div
                             className="border border-theme-surface-border px-4 flex items-center justify-between rounded-xl border-none">
                             <div className="text-[0.875rem] leading-[1.428] font-normal ">From</div>
-                            <ComboBox label={"Select Chain"} options={chains}/>
+                            <ComboBox label={"Select Chain"} options={chains} selection={sourceChain}
+                                      setSelection={setSourceChain}/>
                         </div>
                         <div className={"py-3 px-4 flex items-center justify-between"}>
                             <div className="text-[0.875rem] leading-[1.428] font-normal ">Token</div>
                             <div className={"flex justify-end gap-2"}>
                                 <ArrowLongDown height={40}/>
-                                <ComboBox label={"Select Token"} options={tokens} className={"w-[150px]"}/>
+                                <ComboBox label={"Select Token"} options={tokens} selection={token}
+                                          setSelection={setToken} className={"w-[150px]"}/>
                             </div>
                         </div>
                         <div
                             className="border border-theme-surface-border px-4 flex items-center justify-between rounded-xl border-none">
                             <div className="text-[0.875rem] leading-[1.428] font-normal ">To</div>
-                            <ComboBox label={"Select Chain"} options={chains}/>
+                            <ComboBox label={"Select Chain"} options={chains} selection={destinationChain}
+                                      setSelection={setDestinationChain}/>
                         </div>
                         <div
                             className="py-3 px-4 space-y-3 rounded-xl">
@@ -72,6 +102,7 @@ export default function Waitlist() {
                                         allowNegative thousandSeparator="," customInput={Input} displayType="input"
                                         className="bg-transparent outline-none w-full text-[1.25rem] leading-[1.5] font-normal"
                                         placeholder="0.00" inputMode="numeric"
+                                        onChange={(e) => setAmount(e.target.value)}
                                     />
                                     <Button type="button"
                                             className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md
@@ -82,14 +113,13 @@ export default function Waitlist() {
                                     </Button>
                                 </div>
                                 <div className="text-[0.875rem] leading-[1.428] font-normal flex justify-between">
-                                    <div>$0.00</div>
-                                    <div></div>
+                                    <div>{"$"}{marketData && token && amount ? parseFloat(amount) * marketData.data[token].usd : "0.00"}</div>
                                 </div>
                             </div>
                         </div>
                         <div
                             className="border border-theme-surface-border px-4 space-y-2 rounded-xl border-none">
-                            <button type="button" className="flex w-full justify-between disabled:cursor-not-allowed">
+                            <div className="flex w-full justify-between disabled:cursor-not-allowed">
                                 <Accordion type="single" collapsible className={"w-full"}>
                                     <AccordionItem value="item-1">
                                         <AccordionTrigger>
@@ -97,16 +127,24 @@ export default function Waitlist() {
                                                 className="text-[0.875rem] leading-[1.428] font-normal  underline decoration-dashed group-hover:decoration-solid underline-offset-4">Estimates
                                             </div>
                                         </AccordionTrigger>
+                                        <AccordionContent
+                                            className={"flex flex-row justify-between"}>
+                                            <div
+                                                className="text-[0.875rem] leading-[1.428] font-normal  underline decoration-dashed underline-offset-4">
+                                                Estimated Fee
+                                            </div>
+                                            <div>{" "}-{" "}</div>
+                                        </AccordionContent>
                                         <AccordionContent className={"flex flex-row justify-between"}>
                                             <div
-                                                className="text-[0.875rem] leading-[1.428] font-normal  underline decoration-dashed underline-offset-4">Avg
-                                                Settlement Time
+                                                className="text-[0.875rem] leading-[1.428] font-normal  underline decoration-dashed underline-offset-4">
+                                                Avg Settlement Time
                                             </div>
-                                            <div>5-30 min</div>
+                                            <div>5-10 min</div>
                                         </AccordionContent>
                                     </AccordionItem>
                                 </Accordion>
-                            </button>
+                            </div>
                         </div>
                     </div>
                     <AnimatePresence>

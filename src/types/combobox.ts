@@ -3,6 +3,8 @@ export interface ComboBoxProps {
     placeholder?: string;
     options: ComboBoxOption[];
     className?: string;
+    selection: string;
+    setSelection: (selection: string) => void;
 }
 
 export interface ComboBoxOption {

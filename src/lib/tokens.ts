@@ -4,5 +4,5 @@ export const tokens = [
     {name: "WETH", logo: baseURL + "weth.png"},
     {name: "USDC", logo: baseURL + "usdc.png"},
     {name: "USDT", logo: baseURL + "usdt.png"},
-    {name: "xPufETH", logo: baseURL + "pufeth.png"}
+    {name: "PufETH", logo: baseURL + "pufeth.png"}
 ];

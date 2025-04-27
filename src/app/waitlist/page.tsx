@@ -53,7 +53,6 @@ export default function Waitlist() {
         }
     };
 
-
     return (
         <div className="w-full h-full p-5">
 

@@ -38,8 +38,7 @@ export default function Home() {
               Layer
             </h1>
             <p className="mt-4 text-xs sm:text-base md:text-xl text-black dark:text-white/70 sm:pr-4">
-              SettleX is the first FhEVM Clearing Layer, solving fragmentation
-              in modular blockchains while providing privacy for users.
+              SettleX is the first Privacy-Preserving Cross-Chain Clearing and Settlement Layer
             </p>
             <p
               className="mt-3 sm:mt-5 md:mt-8 flex items-center gap-4 sm:gap-8 text-xs sm:text-sm md:text-lg xl:text-xl text-black dark:text-white/70"
@@ -62,7 +61,27 @@ export default function Home() {
                     decoding="async"
                     data-nimg="1"
                     className="h-4 sm:h-7 md:h-8 w-auto select-none group-hover:opacity-70 invert dark:invert-0"
-                    src="./union-logo-white.svg"
+                    src="/brands/union-logo-white.svg"
+                  />
+                </a>
+              </span>
+              <span className="flex items-center gap-4 sm:gap-8">
+                <a
+                  href="https://www.quicknode.com?utm_source=settleX&utm_medium=partner&utm_campaign=SettleX"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  className="group"
+                >
+                  <Image
+                    alt="QuickNode - Partner"
+                    draggable="false"
+                    loading="lazy"
+                    width="656"
+                    height="182"
+                    decoding="async"
+                    data-nimg="1"
+                    className="h-4 sm:h-7 md:h-8 w-auto select-none group-hover:opacity-70 dark:invert dark:hue-rotate-180"
+                    src="/brands/quicknode-logo.png"
                   />
                 </a>
               </span>

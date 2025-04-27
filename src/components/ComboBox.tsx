@@ -20,9 +20,8 @@ import {ComboBoxOption, ComboBoxProps} from "@/types/combobox";
 import Image from "next/image";
 
 export function ComboBox(props: ComboBoxProps) {
-    const {label, placeholder, options, className} = props;
+    const {label, placeholder, options, className, selection, setSelection} = props;
     const [open, setOpen] = React.useState(false)
-    const [selection, setSelection] = React.useState("")
     return (
         <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
