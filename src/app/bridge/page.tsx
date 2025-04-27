@@ -113,7 +113,7 @@ export default function Bridge() {
                                     </Button>
                                 </div>
                                 <div className="text-[0.875rem] leading-[1.428] font-normal flex justify-between">
-                                    <div>{"$"}{marketData && token && amount ? parseFloat(amount) * marketData.data[token].usd : "0.00"}</div>
+                                    <div>{"$"}{marketData && token && amount ? parseFloat(amount) * marketData.data[token.toUpperCase()].usd : "0.00"}</div>
                                 </div>
                             </div>
                         </div>
