@@ -1,7 +1,7 @@
 import {NextResponse} from 'next/server';
 import {tokens} from "@lib/tokens";
 
-export async function GET(req: Request) {
+export async function GET() {
     try {
         const queryParams = new URLSearchParams({
             symbol: tokens.map(token => token.name.toUpperCase()).join(","),
