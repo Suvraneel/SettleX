@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import {FloatingNav} from "@components/ui/floating-navbar";
-import {BrandGithub, BrandTelegram, BrandX, Chip, FileText} from "@mynaui/icons-react";
+import {BrandGithub, BrandTelegram, BrandX, FileText} from "@mynaui/icons-react";
 import Link from "next/link";
 
 const navItems = [
@@ -10,7 +10,7 @@ const navItems = [
     {name: "Github", link: "https://github.com/SettleX-Labs/", icon: <BrandGithub className="h-5 w-5"/>},
     // {name: "Slack", link: "/", icon: <BrandSlack className="h-5 w-5"/>},
     {name: "White Paper", link: "/", icon: <FileText className="h-5 w-5"/>},
-    {name: "Bridge", link: "/bridge", icon: <Chip className="h-5 w-5"/>},
+    // {name: "Bridge", link: "/bridge", icon: <Chip className="h-5 w-5"/>},
 ];
 
 function Header() {
