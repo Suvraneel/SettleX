@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "SettleX",
   description:
-    "SettleX is the first confidential clearing and settlement layer for stablecoins, Fully compliant, chain-agnostic, and built for institutions.",
+    "SettleX is the first confidential clearing and settlement layer for stablecoins, fully compliant, chain-agnostic, and built for institutions.",
 };
 
 export default function RootLayout({

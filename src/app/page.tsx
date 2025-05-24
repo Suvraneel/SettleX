@@ -46,7 +46,7 @@ export default function Home() {
               Layer
             </h1>
             <p className="mt-4 text-xs sm:text-base md:text-xl text-black dark:text-white/70 sm:pr-4">
-              SettleX is the first confidential clearing and settlement layer for stablecoins, Fully compliant, chain-agnostic, and built for institutions.
+              SettleX is the first confidential clearing and settlement layer for stablecoins, fully compliant, chain-agnostic, and built for institutions.
             </p>
             <p
               className="mt-3 sm:mt-5 md:mt-8 flex items-center gap-4 sm:gap-8 text-xs sm:text-sm md:text-lg xl:text-xl text-black dark:text-white/70"
