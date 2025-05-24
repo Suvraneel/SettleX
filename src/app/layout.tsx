@@ -25,7 +25,7 @@ export default function RootLayout({children}: Readonly<{ children: ReactNode }>
     return (
         <html lang="en">
         <head>
-            <link rel="icon" href="/favicon.ico" sizes="any" />
+            <link rel="icon" href="/settlex-favicon.ico" sizes="any" />
             <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192" />
             <link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512" />
             <link rel="manifest" href="/site.webmanifest" />
