@@ -5,14 +5,11 @@ import {ComponentProps} from "react";
 import {ParallaxProvider} from "react-scroll-parallax";
 
 export function Providers({
-                              children,
-                              ...props
+                              children
                           }: ComponentProps<typeof ThemeProvider>) {
     return (
-        <ThemeProvider {...props}>
-            <ParallaxProvider>
-                {children}
-            </ParallaxProvider>
-        </ThemeProvider>
+        <ParallaxProvider>
+            {children}
+        </ParallaxProvider>
     )
 }

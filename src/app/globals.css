@@ -9,7 +9,7 @@
         --muted: #1E1E23;
         --muted-foreground: #A3A3A3;
         --muted-foreground-rgb: 163, 163, 163;
-        --card: #121215;
+        --card: #141414;
         --card-foreground: #FFFFFF;
         --border: #353535;
         --input: #232323;
@@ -40,6 +40,7 @@ body {
     background-color: var(--background);
     color: #ffffff;
     font-family: 'Helvetica Neue', 'Inter', sans-serif;
+    scroll-behavior: smooth;
 }
 
 /* Hide arrows in number input */

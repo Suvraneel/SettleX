@@ -1,7 +1,10 @@
 // components/FAQ.tsx
 'use client';
 
-import { useState } from 'react';
+import {Accordion} from '@radix-ui/react-accordion';
+import {useState} from 'react';
+import {AccordionContent, AccordionItem, AccordionTrigger} from "@components/ui/accordion";
+import Image from "next/image";
 
 interface FAQItem {
     question: string;
@@ -37,41 +40,42 @@ const faqList: FAQItem[] = [
 ];
 
 export default function FAQ() {
-    const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-    const toggleIndex = (idx: number) => {
-        setOpenIndex(openIndex === idx ? null : idx);
-    };
-
     return (
-        <section id="faq" className="py-16 px-6 md:px-12 lg:px-24">
+        <section id="faq"
+                 className="relative w-full mt-4 py-16 px-6 md:px-12 lg:px-24 overflow-clip">
             <div className="max-w-3xl mx-auto text-center">
-                <h2 className="text-3xl md:text-5xl font-normal leading-tight text-foreground">Frequently Asked Questions</h2>
-                <p className="mt-4 font-light text-base text-muted-foreground">If you need to know about using SettleX features, compliance, or supported chains.</p>
+                <h2 className="text-3xl md:text-5xl font-normal leading-tight text-foreground">Frequently Asked
+                    Questions</h2>
+                <p className="mt-4 font-light text-base text-muted-foreground">If you need to know about using SettleX
+                    features, compliance, or supported chains.</p>
             </div>
-
-            <div className="mt-8 max-w-3xl mx-auto space-y-4">
+            <>
+                <Image
+                    src="/hero/floating-coin-1.svg"
+                    alt="USDC"
+                    width={150}
+                    height={150}
+                    className="absolute top-40 left-80 animate-float opacity-30 -z-10"
+                />
+                <Image
+                    src="/hero/floating-coin-4.svg"
+                    alt="USDT"
+                    width={150}
+                    height={150}
+                    className="absolute top-96 -right-12 animate-float delay-3000 opacity-30"
+                />
+            </>
+            <div className="mt-8 max-w-2xl mx-auto space-y-4">
                 {faqList.map((item, idx) => (
-                    <div
-                        key={idx}
-                        className="bg-[#1f1f2c] rounded-lg overflow-hidden"
-                    >
-                        <button
-                            onClick={() => toggleIndex(idx)}
-                            aria-expanded={openIndex === idx}
-                            className="w-full text-left px-6 py-4 flex justify-between items-center focus:outline-none"
-                        >
-                            <span className="text-gray-100 font-medium">{item.question}</span>
-                            <span className="text-teal-400 text-xl">
-                {openIndex === idx ? '−' : '+'}
-              </span>
-                        </button>
-                        {openIndex === idx && (
-                            <div className="px-6 pb-4 text-gray-300">
+                    <Accordion type="single" collapsible key={idx}
+                               className="bg-card rounded-xl">
+                        <AccordionItem value={`item-${idx + 1}`}>
+                            <AccordionTrigger>{item.question}</AccordionTrigger>
+                            <AccordionContent>
                                 {item.answer}
-                            </div>
-                        )}
-                    </div>
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
                 ))}
             </div>
         </section>

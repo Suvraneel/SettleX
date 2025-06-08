@@ -18,7 +18,7 @@ export default function RootLayout({
     return (
         <html lang="en">
         <head>
-            <link rel="icon" href="/settlex-favicon.ico" sizes="any"/>
+            <link rel="icon" href="/favicon.ico" sizes="any"/>
             <link
                 rel="icon"
                 type="image/png"
@@ -34,12 +34,7 @@ export default function RootLayout({
             <link rel="manifest" href="/site.webmanifest"/>
         </head>
         <body className="font-helvetica scroll-smooth">
-        <Providers
-            attribute="class"
-            defaultTheme="dark"
-            storageKey="theme"
-            disableTransitionOnChange={false}
-        >
+        <Providers>
             {children}
             <Analytics/>
         </Providers>

@@ -1,3 +1,4 @@
+'use client';
 import * as React from "react"
 import {Slot} from "@radix-ui/react-slot"
 import {cva, type VariantProps} from "class-variance-authority"
@@ -12,7 +13,8 @@ const buttonVariants = cva(
         variants: {
             variant: {
                 default:
-                    "bg-accent-10 bg-gradient-to-b from-accent-10 to-accent-30 rounded-xl border border-t-0 border-b-2 border-accent-40 font-light text-accent hover:bg-primary/90",
+                    "bg-accent-10 bg-gradient-to-b from-accent-10 to-accent-30 rounded-xl relative overflow-hidden group shadow-lg shadow-black/50 hover:shadow-none" +
+                    "border border-t-0 border-b-2 border-accent-40 font-light text-accent hover:bg-primary/90 hover:translate-y-0.5 hover:shadow-",
                 destructive:
                     "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
                 outline:
@@ -50,7 +52,15 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 className={cn(buttonVariants({variant, size, className}))}
                 ref={ref}
                 {...props}
-            />
+            >
+                {props.children}
+                {/* Reflection spans */}
+                <span className="absolute top-0 left-0 h-full w-5 animate-[reflect_5s_ease-in-out_infinite]
+                bg-gradient-to-r from-accent-40 via-transparent to-accent-80 blur-sm skew-x-[-20deg] delay-[20ms] ease-in
+                group-hover:animate-none group-hover:left-[120%] group-hover:transition-all group-hover:duration-300 group-hover:delay-[20ms]"/>
+                <span className="absolute top-0 -right-3 h-full w-5 bg-gradient-to-r from-accent-40 via-transparent to-accent-80
+                blur-sm skew-x-[-20deg] transition-all duration-[400ms] delay-[20ms] ease-in group-hover:left-full"/>
+            </Comp>
         )
     }
 )

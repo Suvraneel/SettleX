@@ -49,6 +49,7 @@ export default {
                     10: 'rgba(var(--accent-rgb), 0.1)',
                     30: 'rgba(var(--accent-rgb), 0.3)',
                     40: 'rgba(var(--accent-rgb), 0.4)',
+                    80: 'rgba(var(--accent-rgb), 0.8)',
                 },
                 destructive: {
                     DEFAULT: 'var(--destructive)',
@@ -90,14 +91,24 @@ export default {
                 },
                 float: {
                     '0%, 100%': {transform: 'translateY(0px)'},
-                    '50%': {transform: 'translateY(-10px)'},
-                }
+                    '50%': {transform: 'translateY(-20px)'},
+                },
+                reflect: {
+                    '0%, 100%': {transform: 'translateX(0) skewX(-20deg)'},
+                    '50%': {transform: 'translateX(10px) skewX(-20deg)'},
+                },
             },
             animation: {
                 'accordion-down': 'accordion-down 0.2s ease-out',
                 'accordion-up': 'accordion-up 0.2s ease-out',
-                float: 'float 6s ease-in-out infinite'
-            }
+                float: 'float 8s ease-in-out infinite',
+                reflect: 'slide-small 2s ease-in-out infinite',
+            },
+            transitionDelay: {
+                2000: '2000ms',
+                3000: '3000ms',
+                4000: '4000ms',
+            },
         }
     },
     plugins: [
