@@ -2,7 +2,7 @@
 import React from 'react';
 import {Bounce, ToastContainer} from "react-toastify";
 
-function Toaster(props: { theme: string | undefined; }) {
+function Toaster(props: { theme?: string | undefined; }) {
     const {theme} = props;
     return (
         <ToastContainer
