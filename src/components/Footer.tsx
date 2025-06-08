@@ -16,8 +16,7 @@ export default function Footer() {
                                 src="/SettleXClrInv.svg"
                                 alt="SettleX Logo"
                                 fill={true}
-                                objectFit={"contain"}
-                                className="absolute left-0 bottom-0"
+                                className="absolute left-0 bottom-0 object-contain"
                             />
                         </div>
                     </Link>

@@ -2,7 +2,6 @@
 'use client';
 
 import {Accordion} from '@radix-ui/react-accordion';
-import {useState} from 'react';
 import {AccordionContent, AccordionItem, AccordionTrigger} from "@components/ui/accordion";
 import Image from "next/image";
 

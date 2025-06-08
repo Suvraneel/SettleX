@@ -105,6 +105,7 @@ export default {
                 reflect: 'slide-small 2s ease-in-out infinite',
             },
             transitionDelay: {
+                20: '20ms',
                 2000: '2000ms',
                 3000: '3000ms',
                 4000: '4000ms',
