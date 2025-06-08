@@ -28,6 +28,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-number-format": "^5.4.4",
+    "react-scroll-parallax": "^3.4.5",
     "react-toastify": "^11.0.2",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7"

@@ -1,6 +1,6 @@
 "use client";
 import React, {JSX, useState} from "react";
-import {AnimatePresence, motion} from "framer-motion";
+import {AnimatePresence, motion, useMotionValueEvent, useScroll} from "framer-motion";
 import {cn} from "@lib/utils"
 import Link from "next/link";
 // import ThemeToggle from "@components/ThemeToggle";
@@ -18,15 +18,14 @@ export const FloatingNav = ({
     navItems: NavItem[];
     className?: string;
 }) => {
-    // const { scrollYProgress } = useScroll();
+    const { scrollYProgress } = useScroll();
+    const [visible, setVisible] = useState(false);
 
-    const [visible] = useState(true);
-
-    // useMotionValueEvent(scrollYProgress, "change", (current) => {
-    //     // Check if current is not undefined and is a number
-    //     const direction = current! - scrollYProgress.getPrevious()!;
-    //     setVisible(true);
-    // });
+    useMotionValueEvent(scrollYProgress, "change", (current) => {
+        // Check if current is not undefined and is a number
+        const direction = current! - scrollYProgress.getPrevious()!;
+        setVisible(true);
+    });
 
     return (
         <AnimatePresence mode="wait">

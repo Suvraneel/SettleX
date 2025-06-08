@@ -4,58 +4,31 @@
 
 @layer base {
     :root {
-        --background: #FFFFFF;
-        --foreground: #0A0A0A;
-        --muted: #F3F3F3;
+        --background: #060606;
+        --foreground: #FFFFFF;
+        --muted: #1E1E23;
         --muted-foreground: #A3A3A3;
-        --popover: #FFFFFF;
-        --popover-foreground: #0A0A0A;
-        --card: #FFFFFF;
-        --card-foreground: #0A0A0A;
-        --border: #E6E6E6;
-        --input: #E6E6E6;
-        --primary: #19C0DE; /* Logo Cyan */
+        --muted-foreground-rgb: 163, 163, 163;
+        --card: #121215;
+        --card-foreground: #FFFFFF;
+        --border: #353535;
+        --input: #232323;
+        --primary: #19C0DE;
         --primary-foreground: #000000;
         --secondary: #F3F3F3;
         --secondary-foreground: #1A1A1A;
-        --accent: #F3F3F3;
-        --accent-foreground: #1A1A1A;
+        --accent: #17C1DE;
+        --accent-rgb: 23, 193, 222;
+        --accent-foreground: #FFFFFF;
         --destructive: #D93636;
         --destructive-foreground: #FAFAFA;
-        --ring: #0A0A0A;
+        --ring: #D3D3D3;
         --chart-1: #F28B3B;
         --chart-2: #2B9E63;
         --chart-3: #3B5F7E;
-        --chart-4: #F2B02B;
+        --chart-4: #B23B7E;
         --chart-5: #F2B02B;
         --radius: 0.5rem;
-    }
-
-    .dark {
-        --background: #101010;
-        --foreground: #FAFAFA;
-        --muted: #292929;
-        --muted-foreground: #A3A3A3;
-        --popover: #0A0A0A;
-        --popover-foreground: #FAFAFA;
-        --card: #0A0A0A;
-        --card-foreground: #FAFAFA;
-        --border: #292929;
-        --input: #292929;
-        --primary: #19C0DE; /* Logo Cyan */
-        --primary-foreground: #000000;
-        --secondary: #292929;
-        --secondary-foreground: #FAFAFA;
-        --accent: #292929;
-        --accent-foreground: #FAFAFA;
-        --destructive: #9E1E1E;
-        --destructive-foreground: #FAFAFA;
-        --ring: #D3D3D3;
-        --chart-1: #3B5F7E;
-        --chart-2: #2B9E63;
-        --chart-3: #F28B3B;
-        --chart-4: #B23B7E;
-        --chart-5: #D93B7E;
     }
 }
 
@@ -64,6 +37,9 @@
 }
 
 body {
+    background-color: var(--background);
+    color: #ffffff;
+    font-family: 'Helvetica Neue', 'Inter', sans-serif;
 }
 
 /* Hide arrows in number input */
