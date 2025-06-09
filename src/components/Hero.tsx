@@ -122,12 +122,14 @@ export default function Hero(props: { inputRef: RefObject<HTMLInputElement | nul
                         The Settlement Layer for Stablecoins
                     </h1>
                     <p className="mt-4 font-light text-base max-w-xl text-muted-foreground">
-                        SettleX is the first confidential settlement layer for stablecoins. We net cross-chain transfers
+                        {/* SettleX is the first confidential settlement layer for stablecoins. We net cross-chain transfers
                         to
                         cut
                         capital cost, ensure institutional privacy, and enable compliance all in one seamless,
                         chain-agnostic
-                        solution.
+                        solution. */}
+
+                        SettleX is the first confidential clearing and settlement layer for stablecoins, fully compliant, chain-agnostic, and built for institutions.
                     </p>
 
                     {/* Waitlist Form */}
@@ -183,6 +185,9 @@ export default function Hero(props: { inputRef: RefObject<HTMLInputElement | nul
                         for institutions like market makers and liquidity providers
                         move stablecoins
                         across chains.
+                        {/* Need to replace above text with this */}
+
+                        {/* SettleX is the first confidential clearing and settlement layer for stablecoins, built to optimize capital efficiency and privacy across chains. By bridging only the net difference of flows, SettleX slashes bridging costs, protects trading strategies, and enables seamless cross-chain liquidity for institutional users. As the cheapest bridging solution, SettleX serves institutional-grade liquidity participants, including market makers, solvers, and liquidity providers aiming to unlock maximum efficiency and privacy in cross-chain flows. */}
                     </div>
                 </div>
             </Parallax>
