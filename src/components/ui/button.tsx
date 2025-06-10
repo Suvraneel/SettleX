@@ -59,7 +59,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 bg-gradient-to-r from-accent-40 via-transparent to-accent-80 blur-sm skew-x-[-20deg] delay-20 ease-in
                 group-hover:animate-none group-hover:left-[120%] group-hover:transition-all group-hover:duration-300 group-hover:delay-20"/>
                 <span className="absolute top-0 -right-3 h-full w-5 bg-gradient-to-r from-accent-40 via-transparent to-accent-80
-                blur-sm skew-x-[-20deg] transition-all duration-[400ms] delay-20 ease-in group-hover:left-full"/>
+                blur-sm skew-x-[-20deg] transition-all duration-500 delay-20 ease-in group-hover:left-full"/>
             </Comp>
         )
     }

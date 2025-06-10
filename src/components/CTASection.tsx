@@ -1,8 +1,8 @@
 // components/CTASection.tsx
-import Image from 'next/image';
 import {Input} from "@components/ui/input";
 import Link from "next/link";
 import {Button} from "@components/ui/button";
+import Image from "next/image";
 
 export default function CTASection() {
     return (
@@ -33,13 +33,45 @@ export default function CTASection() {
                 </div>
             </div>
             <div className="absolute right-10 -bottom-40 hidden md:block flex-1">
-                <Image
-                    src="/footer/token-wheel.svg"
-                    alt="Globe Illustration"
-                    width={400}
-                    height={400}
-                    className="mx-auto"
-                />
+                <div id="token-wheel" className="relative w-[400px] h-[400px] mx-auto">
+                    <div
+                        className="absolute w-[180px] h-[180px] bg-white/5 backdrop-blur border border-white/10 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
+                        <Image
+                            src="/footer/centerBaseWheel.svg"
+                            alt="Globe Illustration"
+                            fill
+                            className="object-contain"
+                        />
+                    </div>
+                    <div
+                        className="absolute w-[300px] h-[300px] bg-white/5 backdrop-blur border border-white/10 rounded-full top-1/2 left-1/2
+                        transform -translate-x-1/2 -translate-y-1/2 z-20">
+                        <Image
+                            src="/footer/midConcentricWheel.svg"
+                            alt="Globe Illustration"
+                            fill
+                            className="object-contain [animation:spin_20s_linear_infinite_reverse]"
+                        />
+                    </div>
+                    <div
+                        className="absolute w-[400px] h-[400px] bg-white/5 backdrop-blur border border-white/10 rounded-full top-1/2 left-1/2
+                        transform -translate-x-1/2 -translate-y-1/2 z-10">
+                        <Image
+                            src="/footer/outerConcentricWheel.svg"
+                            alt="Globe Illustration"
+                            fill
+                            className="object-contain object-center [animation:spin_20s_linear_infinite]"
+                        />
+                    </div>
+                </div>
+
+                {/*    <Image*/}
+                {/*    src="/footer/token-wheel.svg"*/}
+                {/*    alt="Globe Illustration"*/}
+                {/*    width={400}*/}
+                {/*    height={400}*/}
+                {/*    className="mx-auto"*/}
+                {/*/>*/}
             </div>
         </section>
     );
