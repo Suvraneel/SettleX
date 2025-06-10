@@ -50,7 +50,7 @@ export default function CTASection() {
                             src="/footer/midConcentricWheel.svg"
                             alt="Globe Illustration"
                             fill
-                            className="object-contain [animation:spin_20s_linear_infinite_reverse]"
+                            className="object-contain animate-[spin_20s_linear_infinite_reverse]"
                         />
                     </div>
                     <div
@@ -60,18 +60,10 @@ export default function CTASection() {
                             src="/footer/outerConcentricWheel.svg"
                             alt="Globe Illustration"
                             fill
-                            className="object-contain object-center [animation:spin_20s_linear_infinite]"
+                            className="object-contain object-center animate-[spin_20s_linear_infinite]"
                         />
                     </div>
                 </div>
-
-                {/*    <Image*/}
-                {/*    src="/footer/token-wheel.svg"*/}
-                {/*    alt="Globe Illustration"*/}
-                {/*    width={400}*/}
-                {/*    height={400}*/}
-                {/*    className="mx-auto"*/}
-                {/*/>*/}
             </div>
         </section>
     );
