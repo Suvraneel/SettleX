@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import {Button} from "@components/ui/button";
+import BridgeDialog from "@components/BridgeDialog";
 
 export default function Navbar(props: { handleFocus?: () => void }) {
     return (
@@ -27,6 +28,7 @@ export default function Navbar(props: { handleFocus?: () => void }) {
                             <span className="hover:text-accent">FAQ’s</span>
                         </Link>
                     </li>
+                    <BridgeDialog/>
                     <li>
                         <Link href="#contact" passHref>
                             <span className="hover:text-accent">Contact</span>

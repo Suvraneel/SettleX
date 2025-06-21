@@ -35,20 +35,20 @@ export default function CTASection() {
             <div className="absolute right-10 -bottom-40 hidden md:block flex-1">
                 <div id="token-wheel" className="relative w-[400px] h-[400px] mx-auto">
                     <div
-                        className="absolute w-[180px] h-[180px] bg-white/5 backdrop-blur border border-white/10 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
+                        className="absolute w-[150px] h-[150px] bg-white/5 backdrop-blur border border-white/10 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
                         <Image
                             src="/footer/centerBaseWheel.svg"
-                            alt="Globe Illustration"
+                            alt="Outer Token Wheel"
                             fill
                             className="object-contain"
                         />
                     </div>
                     <div
-                        className="absolute w-[300px] h-[300px] bg-white/5 backdrop-blur border border-white/10 rounded-full top-1/2 left-1/2
-                        transform -translate-x-1/2 -translate-y-1/2 z-20">
+                        className="absolute w-[250px] h-[250px] bg-white/5 backdrop-blur border border-white/10 rounded-full top-1/2 left-1/2
+                        transform -translate-x-1/2 -translate-y-1/2 z-20 scale-110">
                         <Image
                             src="/footer/midConcentricWheel.svg"
-                            alt="Globe Illustration"
+                            alt="Inner Token Wheel"
                             fill
                             className="object-contain animate-[spin_20s_linear_infinite_reverse]"
                         />
