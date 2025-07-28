@@ -1,0 +1,1109 @@
+[
+  {
+    "type": "constructor",
+    "inputs": [
+      { "name": "_hubDomain", "type": "uint32", "internalType": "uint32" },
+      { "name": "_sourceChain", "type": "uint32", "internalType": "uint32" },
+      { "name": "_hubAddress", "type": "address", "internalType": "address" },
+      { "name": "_owner", "type": "address", "internalType": "address" },
+      {
+        "name": "_crossL2Prover",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_callBridgeExtraTokensSig",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      },
+      {
+        "name": "_callSettlementSig",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "bridgeExtraTokens",
+    "inputs": [
+      { "name": "_token", "type": "uint32", "internalType": "uint32" },
+      { "name": "_to", "type": "address", "internalType": "address" },
+      { "name": "_amount", "type": "uint256", "internalType": "uint256" },
+      {
+        "name": "_destinationSpokeId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [{ "name": "", "type": "bytes", "internalType": "bytes" }],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "bridgeSettlement",
+    "inputs": [],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "callTransferDetails",
+    "inputs": [],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "checkOriginalToProtocol",
+    "inputs": [
+      {
+        "name": "_originalToken",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [{ "name": "", "type": "uint32", "internalType": "uint32" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "checkProtocolToOriginal",
+    "inputs": [
+      {
+        "name": "_protocolTokenId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "checkTrustedHubContracts",
+    "inputs": [
+      { "name": "_chainId", "type": "uint32", "internalType": "uint32" },
+      { "name": "_hubContract", "type": "address", "internalType": "address" }
+    ],
+    "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "checkTrustedSpokeContracts",
+    "inputs": [
+      { "name": "_chainId", "type": "uint32", "internalType": "uint32" },
+      {
+        "name": "_spokeContract",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "checkWhitelistAddr",
+    "inputs": [
+      { "name": "_addr", "type": "address", "internalType": "address" }
+    ],
+    "outputs": [{ "name": "", "type": "bool", "internalType": "bool" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "createTransaction",
+    "inputs": [
+      {
+        "name": "_transaction",
+        "type": "tuple",
+        "internalType": "struct Spoke.CrossChainTransfer",
+        "components": [
+          {
+            "name": "sourceChainId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "destinationChainId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "protocolTokenId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "receiver",
+            "type": "address",
+            "internalType": "address"
+          },
+          { "name": "amount", "type": "uint256", "internalType": "uint256" }
+        ]
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "getCallBridgeExtraTokensSig",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "bytes32", "internalType": "bytes32" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getCallSettlementSig",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "bytes32", "internalType": "bytes32" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getCrossL2Prover",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getDestinationPoolContract",
+    "inputs": [
+      { "name": "_chainId", "type": "uint32", "internalType": "uint32" }
+    ],
+    "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getDestinationSpokeContracts",
+    "inputs": [
+      { "name": "_chainId", "type": "uint32", "internalType": "uint32" }
+    ],
+    "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getHubAddress",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getHubChainId",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "uint32", "internalType": "uint32" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getOwner",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getPoolAddr",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getSeenProof",
+    "inputs": [
+      { "name": "_proof", "type": "bytes32", "internalType": "bytes32" }
+    ],
+    "outputs": [{ "name": "", "type": "bool", "internalType": "bool" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getSourceChainId",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "uint32", "internalType": "uint32" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getStoredTransactionDetails",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple[]",
+        "internalType": "struct Spoke.TransferDetail[]",
+        "components": [
+          {
+            "name": "protocolTokenId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "sourceChainId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "destinationChainId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          { "name": "amount", "type": "uint256", "internalType": "uint256" }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getStoredTransactionDetailsId",
+    "inputs": [{ "name": "_id", "type": "uint256", "internalType": "uint256" }],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct Spoke.TransferDetail",
+        "components": [
+          {
+            "name": "protocolTokenId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "sourceChainId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "destinationChainId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          { "name": "amount", "type": "uint256", "internalType": "uint256" }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getStoredTransactionDetailsLength",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getStoredTransactionsData",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple[]",
+        "internalType": "struct Spoke.CrossChainTransfer[]",
+        "components": [
+          {
+            "name": "sourceChainId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "destinationChainId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "protocolTokenId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "receiver",
+            "type": "address",
+            "internalType": "address"
+          },
+          { "name": "amount", "type": "uint256", "internalType": "uint256" }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getStoredTransactionsDataId",
+    "inputs": [{ "name": "_id", "type": "uint256", "internalType": "uint256" }],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct Spoke.CrossChainTransfer",
+        "components": [
+          {
+            "name": "sourceChainId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "destinationChainId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "protocolTokenId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "receiver",
+            "type": "address",
+            "internalType": "address"
+          },
+          { "name": "amount", "type": "uint256", "internalType": "uint256" }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getStoredTransactionsDataLength",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getStoredTransactionsSettlement",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple[]",
+        "internalType": "struct Spoke.CrossChainTransfer[]",
+        "components": [
+          {
+            "name": "sourceChainId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "destinationChainId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "protocolTokenId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "receiver",
+            "type": "address",
+            "internalType": "address"
+          },
+          { "name": "amount", "type": "uint256", "internalType": "uint256" }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getStoredTransactionsSettlementId",
+    "inputs": [{ "name": "_id", "type": "uint256", "internalType": "uint256" }],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct Spoke.CrossChainTransfer",
+        "components": [
+          {
+            "name": "sourceChainId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "destinationChainId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "protocolTokenId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "receiver",
+            "type": "address",
+            "internalType": "address"
+          },
+          { "name": "amount", "type": "uint256", "internalType": "uint256" }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getStoredTransactionsSettlementLength",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "messageFromHub",
+    "inputs": [{ "name": "proof", "type": "bytes", "internalType": "bytes" }],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "messageFromSourceSpoke",
+    "inputs": [{ "name": "proof", "type": "bytes", "internalType": "bytes" }],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "setProtocolToken",
+    "inputs": [
+      {
+        "name": "_originalToken",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_protocolTokenId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "settlement",
+    "inputs": [
+      {
+        "name": "_settlement",
+        "type": "tuple[]",
+        "internalType": "struct Spoke.CrossChainTransfer[]",
+        "components": [
+          {
+            "name": "sourceChainId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "destinationChainId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "protocolTokenId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "receiver",
+            "type": "address",
+            "internalType": "address"
+          },
+          { "name": "amount", "type": "uint256", "internalType": "uint256" }
+        ]
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateCallBridgeExtraTokensSig",
+    "inputs": [
+      {
+        "name": "_callBridgeExtraTokensSig",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateCallSettlementSig",
+    "inputs": [
+      {
+        "name": "_callSettlementSig",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateCrossL2Prover",
+    "inputs": [
+      {
+        "name": "_crossL2Prover",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateDestinationPoolContract",
+    "inputs": [
+      { "name": "_chainId", "type": "uint32", "internalType": "uint32" },
+      {
+        "name": "_destinationPoolContract",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateDestinationSpokeContracts",
+    "inputs": [
+      { "name": "_chainId", "type": "uint32", "internalType": "uint32" },
+      {
+        "name": "_destinationSpokeContract",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateHubChainId",
+    "inputs": [
+      { "name": "_hubChainId", "type": "uint32", "internalType": "uint32" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateHubContract",
+    "inputs": [
+      { "name": "_hubContract", "type": "address", "internalType": "address" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateOwner",
+    "inputs": [
+      { "name": "_owner", "type": "address", "internalType": "address" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updatePoolAddr",
+    "inputs": [
+      { "name": "_poolAddr", "type": "address", "internalType": "address" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateSourceChainId",
+    "inputs": [
+      { "name": "_sourceChainId", "type": "uint32", "internalType": "uint32" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateTrustedHubContracts",
+    "inputs": [
+      { "name": "_chainId", "type": "uint32", "internalType": "uint32" },
+      {
+        "name": "_hubContract",
+        "type": "address",
+        "internalType": "address"
+      },
+      { "name": "_status", "type": "uint256", "internalType": "uint256" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateTrustedSpokeContracts",
+    "inputs": [
+      { "name": "_chainId", "type": "uint32", "internalType": "uint32" },
+      {
+        "name": "_spokeContract",
+        "type": "address",
+        "internalType": "address"
+      },
+      { "name": "_status", "type": "uint256", "internalType": "uint256" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateWhitelist",
+    "inputs": [
+      { "name": "_addr", "type": "address", "internalType": "address" },
+      { "name": "_status", "type": "bool", "internalType": "bool" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "event",
+    "name": "CallBridgeExtraTokens",
+    "inputs": [
+      {
+        "name": "destinationSpokeId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "destinationPoolAddr",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "message",
+        "type": "bytes",
+        "indexed": false,
+        "internalType": "bytes"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "CallBridgeExtraTokensSigUpdated",
+    "inputs": [
+      {
+        "name": "newCallBridgeExtraTokensSig",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "CallSettlement",
+    "inputs": [
+      {
+        "name": "destinationSpokeId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "destinationSpokeAddr",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "message",
+        "type": "bytes",
+        "indexed": false,
+        "internalType": "bytes"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "CallSettlementSigUpdated",
+    "inputs": [
+      {
+        "name": "newCallSettlementSig",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "CallTransferDetails",
+    "inputs": [
+      {
+        "name": "hubChainId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "hubAddress",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "message",
+        "type": "bytes",
+        "indexed": false,
+        "internalType": "bytes"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "OriginalToProtocolSet",
+    "inputs": [
+      {
+        "name": "originalToken",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "protocolTokenId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "OwnerAddressUpdated",
+    "inputs": [
+      {
+        "name": "newOwnerAddress",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ProtocolToOriginalSet",
+    "inputs": [
+      {
+        "name": "protocolTokenId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "originalToken",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "TransactionAdded",
+    "inputs": [
+      {
+        "name": "sourceChainId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "destinationChainId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "protocolTokenId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "receiver",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "UpdateCrossL2Prover",
+    "inputs": [
+      {
+        "name": "crossL2Prover",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "UpdateDestinationPoolContract",
+    "inputs": [
+      {
+        "name": "chainId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "destinationPoolContract",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "UpdateDestinationSpokeContracts",
+    "inputs": [
+      {
+        "name": "chainId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "destinationSpokeContract",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "UpdateHubChainId",
+    "inputs": [
+      {
+        "name": "hubChainId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "UpdateHubContract",
+    "inputs": [
+      {
+        "name": "hubContract",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "UpdatePoolAddr",
+    "inputs": [
+      {
+        "name": "poolAddr",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "UpdateSourceChainId",
+    "inputs": [
+      {
+        "name": "sourceChainId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "UpdateTrustedHubContracts",
+    "inputs": [
+      {
+        "name": "chainId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "hubContract",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "status",
+        "type": "uint256",
+        "indexed": true,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "UpdateTrustedSpokeContracts",
+    "inputs": [
+      {
+        "name": "spokeChainId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "spokeContract",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "status",
+        "type": "uint256",
+        "indexed": true,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "UpdateWhitelist",
+    "inputs": [
+      {
+        "name": "addr",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "status",
+        "type": "bool",
+        "indexed": true,
+        "internalType": "bool"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "error",
+    "name": "SafeERC20FailedOperation",
+    "inputs": [
+      { "name": "token", "type": "address", "internalType": "address" }
+    ]
+  },
+  { "type": "error", "name": "Spoke__AddressIsZero", "inputs": [] },
+  { "type": "error", "name": "Spoke__AlreadyProcessed", "inputs": [] },
+  { "type": "error", "name": "Spoke__CallFromSameChain", "inputs": [] },
+  {
+    "type": "error",
+    "name": "Spoke__InvalidStatus",
+    "inputs": [
+      { "name": "status", "type": "uint256", "internalType": "uint256" }
+    ]
+  },
+  { "type": "error", "name": "Spoke__NotWhitelisted", "inputs": [] },
+  {
+    "type": "error",
+    "name": "Spoke__NotWhitelistedChainAndContract",
+    "inputs": []
+  },
+  { "type": "error", "name": "Spoke__OnlyOwner", "inputs": [] },
+  {
+    "type": "error",
+    "name": "Spoke__StoredTransactionDetailsLengthIsZero",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "Spoke__StoredTransactionSettlementLengthIsZero",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "Spoke__TransferEthBalanceFailed",
+    "inputs": []
+  },
+  { "type": "error", "name": "Spoke__WrongEventSig", "inputs": [] },
+  { "type": "error", "name": "Spoke__WrongSpokeContract", "inputs": [] },
+  { "type": "error", "name": "Spoke__WrongTopicsLength", "inputs": [] },
+  {
+    "type": "error",
+    "name": "Spoke__settlementFailed",
+    "inputs": [
+      {
+        "name": "spokeAddress",
+        "type": "address",
+        "internalType": "address"
+      },
+      { "name": "message", "type": "bytes", "internalType": "bytes" }
+    ]
+  },
+  {
+    "type": "error",
+    "name": "Spoke__transferExtraTokenFailed",
+    "inputs": [
+      {
+        "name": "spokeAddress",
+        "type": "address",
+        "internalType": "address"
+      },
+      { "name": "message", "type": "bytes", "internalType": "bytes" }
+    ]
+  }
+]

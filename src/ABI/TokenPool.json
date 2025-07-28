@@ -1,0 +1,424 @@
+[
+  {
+    "type": "constructor",
+    "inputs": [
+      { "name": "_owner", "type": "address", "internalType": "address" },
+      {
+        "name": "_crossL2Prover",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_callBridgeExtraTokensSig",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "checkOriginalToProtocol",
+    "inputs": [
+      {
+        "name": "_originalToken",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [{ "name": "", "type": "uint32", "internalType": "uint32" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "checkProtocolToOriginal",
+    "inputs": [
+      {
+        "name": "_protocolTokenId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getCallBridgeExtraTokensSig",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "bytes32", "internalType": "bytes32" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getCrossL2Prover",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getOwner",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getSeenProof",
+    "inputs": [
+      { "name": "_proof", "type": "bytes32", "internalType": "bytes32" }
+    ],
+    "outputs": [{ "name": "", "type": "bool", "internalType": "bool" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getTrustedSpokeContracts",
+    "inputs": [
+      { "name": "_chainId", "type": "uint32", "internalType": "uint32" },
+      { "name": "_contract", "type": "address", "internalType": "address" }
+    ],
+    "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getWhitelist",
+    "inputs": [
+      { "name": "_addr", "type": "address", "internalType": "address" }
+    ],
+    "outputs": [{ "name": "", "type": "bool", "internalType": "bool" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "messageFromSourceSpoke",
+    "inputs": [{ "name": "proof", "type": "bytes", "internalType": "bytes" }],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "setProtocolToken",
+    "inputs": [
+      {
+        "name": "_originalToken",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_protocolTokenId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "transferToken",
+    "inputs": [
+      { "name": "_token", "type": "uint32", "internalType": "uint32" },
+      { "name": "_to", "type": "address", "internalType": "address" },
+      { "name": "_amount", "type": "uint256", "internalType": "uint256" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateCallBridgeExtraTokensSig",
+    "inputs": [
+      {
+        "name": "_callBridgeExtraTokensSig",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateCrossL2Prover",
+    "inputs": [
+      {
+        "name": "_crossL2Prover",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateOwner",
+    "inputs": [
+      { "name": "_owner", "type": "address", "internalType": "address" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateTrustedSpokeContracts",
+    "inputs": [
+      { "name": "_chainId", "type": "uint32", "internalType": "uint32" },
+      {
+        "name": "_spokeContract",
+        "type": "address",
+        "internalType": "address"
+      },
+      { "name": "_status", "type": "uint256", "internalType": "uint256" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateWhitelist",
+    "inputs": [
+      { "name": "_addr", "type": "address", "internalType": "address" },
+      { "name": "_status", "type": "bool", "internalType": "bool" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "withdraw",
+    "inputs": [
+      { "name": "_token", "type": "uint32", "internalType": "uint32" },
+      { "name": "_to", "type": "address", "internalType": "address" },
+      { "name": "_amount", "type": "uint256", "internalType": "uint256" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "event",
+    "name": "CallBridgeExtraTokensSigUpdated",
+    "inputs": [
+      {
+        "name": "newCallSig",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "OriginalToProtocolSet",
+    "inputs": [
+      {
+        "name": "originalToken",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "protocolTokenId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "OwnerAddressUpdated",
+    "inputs": [
+      {
+        "name": "newOwnerAddress",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ProtocolToOriginalSet",
+    "inputs": [
+      {
+        "name": "protocolTokenId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "originalToken",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "Transfer",
+    "inputs": [
+      {
+        "name": "token",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "receiver",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "UpdateCrossL2Prover",
+    "inputs": [
+      {
+        "name": "newCrossL2Prover",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "UpdateOwner",
+    "inputs": [
+      {
+        "name": "newOwnerAddress",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "UpdateTrustedSpokeContracts",
+    "inputs": [
+      {
+        "name": "chainId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "spokeContract",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "status",
+        "type": "uint256",
+        "indexed": true,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "UpdateWhitelist",
+    "inputs": [
+      {
+        "name": "addr",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "status",
+        "type": "bool",
+        "indexed": true,
+        "internalType": "bool"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "Withdraw",
+    "inputs": [
+      {
+        "name": "token",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "receiver",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "error",
+    "name": "SafeERC20FailedOperation",
+    "inputs": [
+      { "name": "token", "type": "address", "internalType": "address" }
+    ]
+  },
+  { "type": "error", "name": "TokenPool__AddressIsZero", "inputs": [] },
+  { "type": "error", "name": "TokenPool__AlreadyProcessed", "inputs": [] },
+  { "type": "error", "name": "TokenPool__CallFromSameChain", "inputs": [] },
+  {
+    "type": "error",
+    "name": "TokenPool__InvalidStatus",
+    "inputs": [
+      { "name": "status", "type": "uint256", "internalType": "uint256" }
+    ]
+  },
+  { "type": "error", "name": "TokenPool__NotWhitelisted", "inputs": [] },
+  {
+    "type": "error",
+    "name": "TokenPool__NotWhitelistedChainAndSpoke",
+    "inputs": []
+  },
+  { "type": "error", "name": "TokenPool__OnlyOwner", "inputs": [] },
+  {
+    "type": "error",
+    "name": "TokenPool__TransferTokenFailed",
+    "inputs": [
+      { "name": "_to", "type": "address", "internalType": "address" },
+      { "name": "_message", "type": "bytes", "internalType": "bytes" }
+    ]
+  },
+  {
+    "type": "error",
+    "name": "TokenPool__WrongDestinationPoolAddr",
+    "inputs": []
+  },
+  { "type": "error", "name": "TokenPool__WrongEventSig", "inputs": [] },
+  { "type": "error", "name": "TokenPool__WrongTopicsLength", "inputs": [] }
+]
