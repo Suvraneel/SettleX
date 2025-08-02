@@ -2,10 +2,31 @@ import Image from 'next/image';
 import Link from "next/link";
 
 const partnerLogos = [
-    {name: 'QuickNode', src: '/brands/quicknode-logo-white.svg', link: 'https://www.quicknode.com/?utm_source=settleX&utm_medium=partner&utm_campaign=SettleX'},
-    {name: 'Union', src: '/brands/union-logo-white.svg', link: 'https://union.build/?utm_source=settleX&utm_medium=partner&utm_campaign=SettleX'},
-    {name: 'Fairblock', src: '/brands/fairblock-logo-white.svg', link: 'https://www.fairblock.network/?utm_source=settleX&utm_medium=partner&utm_campaign=SettleX'},
-    {name: 'Forta', src: '/brands/forta-logo-white.svg', link: 'https://forta.org/?utm_source=settleX&utm_medium=partner&utm_campaign=SettleX'},
+    {
+        name: 'QuickNode',
+        src: '/brands/quicknode-logo-white.svg',
+        link: 'https://www.quicknode.com/?utm_source=settleX&utm_medium=partner&utm_campaign=SettleX'
+    },
+    {
+        name: 'Union',
+        src: '/brands/union-logo-white.svg',
+        link: 'https://union.build/?utm_source=settleX&utm_medium=partner&utm_campaign=SettleX'
+    },
+    {
+        name: 'Fairblock',
+        src: '/brands/fairblock-logo-white.svg',
+        link: 'https://www.fairblock.network/?utm_source=settleX&utm_medium=partner&utm_campaign=SettleX'
+    },
+    {
+        name: 'Forta',
+        src: '/brands/forta-logo-white.svg',
+        link: 'https://forta.org/?utm_source=settleX&utm_medium=partner&utm_campaign=SettleX'
+    },
+    {
+        name: 'Avail',
+        src: '/brands/avail-logo-white.svg',
+        link: 'https://www.availproject.org/?utm_source=settleX&utm_medium=partner&utm_campaign=SettleX'
+    },
 ];
 
 export default function Partners() {
