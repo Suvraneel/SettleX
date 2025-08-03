@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, FormEvent, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { Bounce, toast } from "react-toastify";
 import { useTheme } from "next-themes";
 import { ComboBox } from "@components/ComboBox";
@@ -18,12 +18,20 @@ import { tokens } from "@lib/tokens";
 import { NumericFormat } from "react-number-format";
 import { MarketDataResponse } from "@/types/uniblock-response";
 import Navbar from "@components/Navbar";
-import { useBalance, useWriteContract } from "wagmi";
+import { useBalance, useWriteContract, useReadContract } from "wagmi";
 import { useAppKitAccount } from "@reown/appkit/react";
-import { erc20Abi, parseUnits, type Address } from "viem";
+import { erc20Abi, type Address } from "viem";
 import Image from "next/image";
 import { ParticlesContainer } from "@/components/ParticlesContainer";
 import { abi } from "@/abi";
+import {
+  executeMainTransaction,
+  handleApproval,
+  handleSubmit,
+  handleGetBalance,
+  logToBackend,
+  type BridgeLogicParams,
+} from "./bridgeLogic";
 
 export default function Bridge() {
   const { resolvedTheme } = useTheme();
@@ -39,6 +47,9 @@ export default function Bridge() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [needsApproval, setNeedsApproval] = useState(false);
   const [isApproved, setIsApproved] = useState(false);
+  const [approvalButtonText, setApprovalButtonText] = useState(
+    "Approve Token for spending"
+  );
   const { address, isConnected } = useAppKitAccount();
   const { refetch } = useBalance({ address: address as Address });
 
@@ -58,6 +69,31 @@ export default function Bridge() {
     isError: isMainTxError,
     error: mainTxError,
   } = useWriteContract();
+
+  // Get token contract address for allowance check
+  const selectedToken = tokens.find((t) => t.name === token);
+  const sourceChainId =
+    chains.find((chain) => chain.name === sourceChain)?.chainId || 0;
+  const tokenAddress = selectedToken?.contractAddresses[sourceChainId] as
+    | `0x${string}`
+    | undefined;
+  const spenderAddress = contractAddressMapping[sourceChain] as
+    | `0x${string}`
+    | undefined;
+
+  // Check current allowance - disabled by default, only enabled when needed
+  const { refetch: checkAllowance } = useReadContract({
+    address: tokenAddress,
+    abi: erc20Abi,
+    functionName: "allowance",
+    args:
+      address && spenderAddress
+        ? [address as `0x${string}`, spenderAddress]
+        : undefined,
+    query: {
+      enabled: false, // Disabled by default, we'll manually refetch when needed
+    },
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -86,52 +122,25 @@ export default function Bridge() {
     setIsApproved(false);
   }, [token, sourceChain]);
 
-  // Define executeMainTransaction before using it in useEffect
-  const executeMainTransaction = useCallback(async () => {
-    try {
-      // Write contract call to create intent
-      writeMainTransaction({
-        address: contractAddressMapping[sourceChain],
-        abi,
-        functionName: "createTransaction",
-        args: [
-          {
-            sourceChainId:
-              chains.find((chain) => chain.name === sourceChain)?.chainId || 0,
-            destinationChainId:
-              chains.find((chain) => chain.name === destinationChain)
-                ?.chainId || 0,
-            protocolTokenId:
-              tokens.find((t) => t.name === token)?.protocolTokenId || 1,
-            receiver: (receivingAddress as `0x${string}`) || address,
-            amount: parseUnits(amount.replace(/,/g, ""), 18),
-          },
-        ],
-      });
-
-      // Note: API call removed to prevent duplicate transactions
-      // The blockchain transaction above should be sufficient
-      console.log("Main transaction initiated on blockchain");
-    } catch (error) {
-      console.error("Main transaction error:", error);
-      toast.error("Failed to create intent. Please try again.", {
-        position: "bottom-right",
-        autoClose: 3000,
-        theme: resolvedTheme || "dark",
-        transition: Bounce,
-      });
-      setIsSubmitting(false);
-    }
-  }, [
-    writeMainTransaction,
+  // Create bridge logic parameters
+  const getBridgeParams = (): BridgeLogicParams => ({
+    token,
+    amount,
     sourceChain,
     destinationChain,
-    token,
     receivingAddress,
     address,
-    amount,
     resolvedTheme,
-  ]);
+    checkAllowance,
+    writeMainTransaction,
+    writeApproval,
+    setIsSubmitting,
+    setNeedsApproval,
+    setIsApproved,
+    setApprovalButtonText,
+    isApprovalPending,
+    abi,
+  });
 
   // Handle approval transaction success - automatically trigger main transaction
   useEffect(() => {
@@ -142,14 +151,14 @@ export default function Bridge() {
       toast.success("Token approved! Creating transaction...", {
         position: "bottom-right",
         autoClose: 3000,
-        theme: resolvedTheme || "dark",
+        theme: "dark",
         transition: Bounce,
       });
 
-      // Automatically trigger the main transaction
-      executeMainTransaction();
+      executeMainTransaction(getBridgeParams());
     }
-  }, [isApprovalSuccess, resolvedTheme, executeMainTransaction]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isApprovalSuccess]); // Only depend on isApprovalSuccess, ignore the function dependency
 
   // Handle approval transaction error
   useEffect(() => {
@@ -181,57 +190,21 @@ export default function Bridge() {
       });
 
       // Optional: Log to backend after successful blockchain transaction
-      const logToBackend = async () => {
-        try {
-          const requestBody = {
-            sourceChain,
-            destChain: destinationChain,
-            token,
-            amount: amount.replaceAll(",", ""),
-            address,
-            senderWalletAddress: address,
-            recipientWalletAddress: receivingAddress || address,
-          };
+      logToBackend({
+        sourceChain,
+        destinationChain,
+        token,
+        amount,
+        address,
+        receivingAddress,
+      });
 
-          const response = await fetch("/api/intent", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(requestBody),
-          });
-
-          const result = await response.json();
-          if (result.success) {
-            console.log(`Intent logged with ID: ${result.data?.intentId}`);
-          }
-        } catch (error) {
-          console.error("Backend logging error:", error);
-          // Don't show error to user since main transaction succeeded
-        }
-      };
-
-      logToBackend();
-
-      // Reset form
-      setAmount("");
-      setSourceChain("");
-      setDestinationChain("");
-      setToken("");
-      setReceivingAddress("");
+      // Form will remain filled after successful submission
       setNeedsApproval(false);
       setIsApproved(false);
     }
-  }, [
-    isMainTxSuccess,
-    resolvedTheme,
-    sourceChain,
-    destinationChain,
-    token,
-    amount,
-    address,
-    receivingAddress,
-  ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMainTxSuccess, resolvedTheme]); // Only depend on transaction success and theme, ignore form values
 
   // Handle main transaction error
   useEffect(() => {
@@ -247,82 +220,6 @@ export default function Bridge() {
     }
   }, [isMainTxError, mainTxError, resolvedTheme]);
 
-  const handleGetBalance = async () => {
-    const balance = await refetch();
-    console.log(`${balance?.data?.formatted} ${balance?.data?.symbol}`);
-    return balance?.data?.formatted.toString() || "0";
-  };
-
-  const handleApproval = async () => {
-    if (!address || !token || token === "ETH") return;
-
-    const selectedToken = tokens.find((t) => t.name === token);
-    if (
-      !selectedToken?.contractAddresses[
-        chains.find((chain) => chain.name === sourceChain)?.chainId || 0
-      ]
-    ) {
-      toast.error("Token contract address not found for this chain", {
-        position: "bottom-right",
-        autoClose: 3000,
-        theme: resolvedTheme || "dark",
-        transition: Bounce,
-      });
-      return;
-    }
-
-    const spenderAddress = contractAddressMapping[sourceChain];
-    const tokenAddress = selectedToken.contractAddresses[
-      chains.find((chain) => chain.name === sourceChain)?.chainId || 0
-    ] as `0x${string}`;
-
-    const approvalAmount = parseUnits(amount.replace(/,/g, ""), 18);
-
-    try {
-      writeApproval({
-        address: tokenAddress,
-        abi: erc20Abi,
-        functionName: "approve",
-        args: [spenderAddress, approvalAmount],
-      });
-    } catch (error) {
-      console.error("Approval error:", error);
-      toast.error("Failed to initiate approval transaction", {
-        position: "bottom-right",
-        autoClose: 3000,
-        theme: resolvedTheme || "dark",
-        transition: Bounce,
-      });
-    }
-  };
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    // For ETH, go directly to main transaction
-    if (token === "ETH") {
-      setIsSubmitting(true);
-      executeMainTransaction();
-      return;
-    }
-
-    // For ERC20 tokens, check if approval is needed
-    if (!isApproved) {
-      setNeedsApproval(true);
-      setIsSubmitting(true); // Set this so the flow continues after approval
-      toast.info("Token approval required before creating transaction", {
-        position: "bottom-right",
-        autoClose: 3000,
-        theme: resolvedTheme || "dark",
-        transition: Bounce,
-      });
-      return;
-    }
-
-    // If already approved, go directly to main transaction
-    setIsSubmitting(true);
-    executeMainTransaction();
-  };
   return (
     <div className="relative flex flex-col items-center w-full h-full p-5 transition-all">
       <Navbar showWallet />
@@ -382,7 +279,7 @@ export default function Bridge() {
       </>
       <div className="w-full h-full min-h-[90vh] m-auto flex flex-col items-center gap-4 justify-center flex-wrap mt-16 z-20">
         <form
-          onSubmit={handleSubmit}
+          onSubmit={(e) => handleSubmit(e, getBridgeParams())}
           className="w-full relative md:max-w-lg bg-card text-card-foreground py-6 px-10 rounded-3xl shadow-xl transition"
         >
           <div className="flex flex-col gap-2 pb-2 px-4">
@@ -445,7 +342,9 @@ export default function Bridge() {
                   <Button
                     type="button"
                     disabled={!token || !isConnected}
-                    onClick={async () => setAmount(await handleGetBalance())}
+                    onClick={async () =>
+                      setAmount(await handleGetBalance({ refetch }))
+                    }
                   >
                     Max
                   </Button>
@@ -534,11 +433,9 @@ export default function Bridge() {
                   !amount
                 }
                 type="button"
-                onClick={handleApproval}
+                onClick={() => handleApproval(getBridgeParams())}
               >
-                {isApprovalPending
-                  ? "Approving..."
-                  : `Approve ${token} for spending`}
+                {isApprovalPending ? "Approving..." : approvalButtonText}
               </Button>
             ) : (
               <Button

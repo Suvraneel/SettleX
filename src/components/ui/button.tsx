@@ -47,7 +47,7 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({className, variant, size, asChild = false, ...props}, ref) => {
+    ({className, variant, size, asChild = false, loading = false, ...props}, ref) => {
         const Comp = asChild ? Slot : "button"
         return (
             <Comp
@@ -67,7 +67,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                     </>
                 }
                 {
-                    props.loading && (
+                    loading && (
                         <span className="absolute inset-0 flex items-center justify-center">
                             <svg
                                 className="animate-spin h-5 w-5 text-white"
