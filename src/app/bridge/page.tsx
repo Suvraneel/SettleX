@@ -23,7 +23,7 @@ import { useAppKitAccount } from "@reown/appkit/react";
 import { erc20Abi, type Address } from "viem";
 import Image from "next/image";
 import { ParticlesContainer } from "@/components/ParticlesContainer";
-import { abi } from "@abi/index";
+import { abi } from "@/abi";
 import {
   executeMainTransaction,
   handleApproval,
