@@ -1,34 +1,35 @@
 "use client";
-import { useState, useEffect } from "react";
-import { Bounce, toast } from "react-toastify";
-import { useTheme } from "next-themes";
+import { ParticlesContainer } from "@/components/ParticlesContainer";
+import { MarketDataResponse } from "@/types/uniblock-response";
+import { abi } from "@abi";
 import { ComboBox } from "@components/ComboBox";
-import { chains, contractAddressMapping } from "@lib/chains";
+import Navbar from "@components/Navbar";
+import Toaster from "@components/Toaster";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@components/ui/accordion";
-import { Input } from "@components/ui/input";
 import { Button } from "@components/ui/button";
-import { ArrowLongDown, CreditCard } from "@mynaui/icons-react";
-import { AnimatePresence, motion } from "framer-motion";
+import { Input } from "@components/ui/input";
+import { chains, contractAddressMapping } from "@lib/chains";
 import { tokens } from "@lib/tokens";
-import { NumericFormat } from "react-number-format";
-import { MarketDataResponse } from "@/types/uniblock-response";
-import Navbar from "@components/Navbar";
-import { useBalance, useWriteContract, useReadContract } from "wagmi";
+import { ArrowLongDown, CreditCard } from "@mynaui/icons-react";
 import { useAppKitAccount } from "@reown/appkit/react";
-import { erc20Abi, type Address } from "viem";
+import { AnimatePresence, motion } from "framer-motion";
+import { useTheme } from "next-themes";
 import Image from "next/image";
-import { ParticlesContainer } from "@/components/ParticlesContainer";
-import { abi } from "@/abi";
+import { useEffect, useState } from "react";
+import { NumericFormat } from "react-number-format";
+import { Bounce, toast } from "react-toastify";
+import { erc20Abi, type Address } from "viem";
+import { useBalance, useReadContract, useWriteContract } from "wagmi";
 import {
   executeMainTransaction,
   handleApproval,
-  handleSubmit,
   handleGetBalance,
+  handleSubmit,
   logToBackend,
   type BridgeLogicParams,
 } from "./bridgeLogic";
@@ -91,7 +92,7 @@ export default function Bridge() {
         ? [address as `0x${string}`, spenderAddress]
         : undefined,
     query: {
-      enabled: false, // Disabled by default, we'll manually refetch when needed
+      // manual refetch will be used when needed
     },
   });
 
@@ -471,6 +472,7 @@ export default function Bridge() {
             </Button>
           </div>
         </form>
+        <Toaster />
       </div>
     </div>
   );
