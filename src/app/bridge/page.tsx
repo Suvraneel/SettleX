@@ -102,6 +102,14 @@ export default function Bridge() {
     },
   });
 
+  // For reading token balances
+  const { refetch: readTokenBalance } = useReadContract({
+    address: tokenAddress,
+    abi: erc20Abi,
+    functionName: "balanceOf",
+    args: address ? [address as `0x${string}`] : undefined,
+  });
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -125,6 +133,7 @@ export default function Bridge() {
 
   // Reset approval state when token or chain changes
   useEffect(() => {
+    setAmount("")
     setNeedsApproval(false);
     setIsApproved(false);
   }, [token, sourceChain]);
@@ -375,9 +384,16 @@ export default function Bridge() {
                   <Button
                     type="button"
                     disabled={!token || !isConnected}
-                    onClick={async () =>
-                      setAmount(await handleGetBalance({ refetch }))
-                    }
+                    onClick={async () => {
+                      const balance = await handleGetBalance({
+                        refetch,
+                        token,
+                        sourceChain,
+                        address,
+                        readTokenBalance,
+                      });
+                      setAmount(balance);
+                    }}
                   >
                     Max
                   </Button>

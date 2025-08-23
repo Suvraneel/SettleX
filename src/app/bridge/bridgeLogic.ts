@@ -1,4 +1,4 @@
-import { parseUnits, erc20Abi } from "viem";
+import { parseUnits, erc20Abi, formatUnits } from "viem";
 import { toast, Bounce } from "react-toastify";
 import { tokens } from "@lib/tokens";
 import { chains, contractAddressMapping } from "@lib/chains";
@@ -250,21 +250,66 @@ export const handleSubmit = async (
 
 // Handle getting wallet balance
 export const handleGetBalance = async (
-  params: Pick<BridgeLogicParams, "refetch">
+  params: Pick<BridgeLogicParams, "refetch"> & {
+    token?: string;
+    sourceChain?: string;
+    address?: string;
+    readTokenBalance?: () => Promise<{ data?: bigint }>;
+  }
 ): Promise<string> => {
-  const { refetch } = params;
+  const { refetch, token, sourceChain, address, readTokenBalance } = params;
 
-  if (!refetch) {
-    console.warn("refetch function not provided");
+  // If no token specified or token is ETH, fetch native balance
+  if (!token || token === "ETH") {
+    if (!refetch) {
+      console.warn("refetch function not provided for native balance");
+      return "0";
+    }
+
+    try {
+      const balance = await refetch();
+      console.log(`${balance?.data?.formatted} ${balance?.data?.symbol}`);
+      return balance?.data?.formatted?.toString() || "0";
+    } catch (error) {
+      console.error("Error fetching native balance:", error);
+      return "0";
+    }
+  }
+
+  // For ERC20 tokens, fetch token balance
+  if (!address || !sourceChain || !readTokenBalance) {
+    console.warn("Missing required parameters for ERC20 balance fetch");
     return "0";
   }
 
   try {
-    const balance = await refetch();
-    console.log(`${balance?.data?.formatted} ${balance?.data?.symbol}`);
-    return balance?.data?.formatted?.toString() || "0";
+    const selectedToken = tokens.find((t) => t.name === token);
+    if (!selectedToken) {
+      console.warn(`Token ${token} not found`);
+      return "0";
+    }
+
+    const sourceChainId = chains.find((chain) => chain.name === sourceChain)?.chainId || 0;
+    const tokenAddress = selectedToken.contractAddresses[sourceChainId] as `0x${string}`;
+
+    if (!tokenAddress) {
+      console.warn(`Token contract address not found for ${token} on ${sourceChain}`);
+      return "0";
+    }
+
+    const { data: balance } = await readTokenBalance();
+
+    if (balance === undefined) {
+      console.warn("Failed to fetch token balance");
+      return "0";
+    }
+
+    // Convert from wei to token units (assuming 18 decimals)
+    const formatted = formatUnits(balance, 18);
+    console.log(`${token} balance: ${formatted}`);
+    return formatted;
   } catch (error) {
-    console.error("Error fetching balance:", error);
+    console.error(`Error fetching ${token} balance:`, error);
     return "0";
   }
 };
