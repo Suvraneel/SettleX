@@ -24,7 +24,12 @@ import { useEffect, useState } from "react";
 import { NumericFormat } from "react-number-format";
 import { Bounce, toast } from "react-toastify";
 import { erc20Abi, type Address } from "viem";
-import { useBalance, useReadContract, useWriteContract } from "wagmi";
+import {
+  useBalance,
+  useReadContract,
+  useWriteContract,
+  useSwitchChain,
+} from "wagmi";
 import {
   executeMainTransaction,
   handleApproval,
@@ -53,6 +58,7 @@ export default function Bridge() {
   );
   const { address, isConnected } = useAppKitAccount();
   const { refetch } = useBalance({ address: address as Address });
+  const { switchChain } = useSwitchChain();
 
   // Separate hooks for approval and main transaction
   const {
@@ -122,6 +128,32 @@ export default function Bridge() {
     setNeedsApproval(false);
     setIsApproved(false);
   }, [token, sourceChain]);
+
+  // Automatically switch wallet chain when source chain changes
+  useEffect(() => {
+    if (sourceChain && isConnected && switchChain) {
+      const selectedChain = chains.find((chain) => chain.name === sourceChain);
+      if (selectedChain) {
+        console.log(
+          `Switching wallet to ${sourceChain} (Chain ID: ${selectedChain.chainId})`
+        );
+        try {
+          switchChain({ chainId: selectedChain.chainId });
+        } catch (error) {
+          console.error("Failed to switch chain:", error);
+          toast.error(
+            `Failed to switch to ${sourceChain}. Please switch manually.`,
+            {
+              position: "bottom-right",
+              autoClose: 3000,
+              theme: "dark",
+              transition: Bounce,
+            }
+          );
+        }
+      }
+    }
+  }, [sourceChain, isConnected, switchChain]);
 
   // Create bridge logic parameters
   const getBridgeParams = (): BridgeLogicParams => ({
