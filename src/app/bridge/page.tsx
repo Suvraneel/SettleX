@@ -16,7 +16,7 @@ import { Input } from "@components/ui/input";
 import { chains, contractAddressMapping } from "@lib/chains";
 import { tokens } from "@lib/tokens";
 import { ArrowLongDown, CreditCard } from "@mynaui/icons-react";
-import { useAppKitAccount } from "@reown/appkit/react";
+import { useAppKitAccount, useAppKitNetwork } from "@reown/appkit/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import Image from "next/image";
@@ -40,23 +40,22 @@ import {
 } from "./bridgeLogic";
 
 export default function Bridge() {
+  const { address, isConnected } = useAppKitAccount();
+  const { chainId } = useAppKitNetwork();
   const { resolvedTheme } = useTheme();
   const [sourceChain, setSourceChain] = useState("");
   const [destinationChain, setDestinationChain] = useState("");
   const [token, setToken] = useState("");
   const [amount, setAmount] = useState("");
-  const [receivingAddressInputShow, setReceivingAddressInputShow] =
-    useState(false);
+  const [receivingAddressInputShow, setReceivingAddressInputShow] = useState(false);
   const [receivingAddress, setReceivingAddress] = useState("");
   const [marketData, setMarketData] = useState<MarketDataResponse | null>(null);
   const [unableToFetch, setUnableToFetch] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [needsApproval, setNeedsApproval] = useState(false);
   const [isApproved, setIsApproved] = useState(false);
-  const [approvalButtonText, setApprovalButtonText] = useState(
-    "Approve Token for spending"
-  );
-  const { address, isConnected } = useAppKitAccount();
+  const [approvalButtonText, setApprovalButtonText] = useState("Approve Token for spending");
+
   const { refetch } = useBalance({ address: address as Address });
   const { switchChain } = useSwitchChain();
 
@@ -109,6 +108,11 @@ export default function Bridge() {
     functionName: "balanceOf",
     args: address ? [address as `0x${string}`] : undefined,
   });
+
+  useEffect(() => {
+    setSourceChain(chains.find((c) => c.chainId === chainId)?.name || "")
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -404,16 +408,16 @@ export default function Bridge() {
                       ? "Loading market data..."
                       : "Unable to fetch market data"
                     : !token
-                    ? "Select a token to see the estimated value"
-                    : amount
-                    ? new Intl.NumberFormat("en-US", {
-                        style: "currency",
-                        currency: "USD",
-                      }).format(
-                        parseFloat(amount.replaceAll(",", "")) *
+                      ? "Select a token to see the estimated value"
+                      : amount
+                        ? new Intl.NumberFormat("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                        }).format(
+                          parseFloat(amount.replaceAll(",", "")) *
                           marketData.data[token.toUpperCase()].usd
-                      )
-                    : "$0.00"}
+                        )
+                        : "$0.00"}
                 </div>
               </div>
             </div>
@@ -504,8 +508,8 @@ export default function Bridge() {
                 {isSubmitting || isMainTxPending
                   ? "Creating Intent..."
                   : isConnected
-                  ? "Create Intent"
-                  : "Connect an Ethereum Wallet to proceed"}
+                    ? "Create Intent"
+                    : "Connect an Ethereum Wallet to proceed"}
               </Button>
             )}
             <Button

@@ -1,4 +1,3 @@
-// context/index.tsx
 "use client";
 
 import { wagmiAdapter, projectId } from "../config";
@@ -23,8 +22,8 @@ if (!projectId) {
 // Set up metadata
 const metadata = {
   name: "SettleX",
-  description: "AppKit Example",
-  url: "https://reown.com/appkit", // origin must match your domain & subdomain
+  description: "The Settlement Layer for Stablecoins",
+  url: "https://settlex.fi",
   icons: ["https://assets.reown.com/reown-profile-pic.png"],
 };
 
@@ -37,6 +36,14 @@ const modal = createAppKit({
   metadata: metadata,
   features: {
     analytics: true, // Optional - defaults to your Cloud configuration
+  },
+  themeMode: "dark",
+  themeVariables: {
+    "--w3m-accent": "var(--accent-80)",
+    "--w3m-color-mix": "var(--card)",
+    "--w3m-color-mix-strength": 40,
+    "--w3m-font-family": "Helvetica Neue, Inter, sans-serif",
+    // "--w3m-border-radius-master": "0.5rem",
   },
 });
 
