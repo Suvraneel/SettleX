@@ -19,29 +19,29 @@ export const tokens: Token[] = [
       534351: "0x1922968E9A8131FEda8bD04c1dD0312A78a0356C", // Scroll
     },
   },
-  {
-    name: "ETH",
-    logo: baseURL + "eth.png",
-    protocolTokenId: 2,
-    // ETH is native, no contract address needed
-    contractAddresses: {},
-  },
-  {
-    name: "WETH",
-    logo: baseURL + "weth.png",
-    protocolTokenId: 3,
-    contractAddresses: {}, // Add later
-  },
-  {
-    name: "USDC",
-    logo: baseURL + "usdc.png",
-    protocolTokenId: 4,
-    contractAddresses: {}, // Add later
-  },
-  {
-    name: "PufETH",
-    logo: baseURL + "pufeth.png",
-    protocolTokenId: 5,
-    contractAddresses: {}, // Add later
-  },
+  // {
+  //   name: "ETH",
+  //   logo: baseURL + "eth.png",
+  //   protocolTokenId: 2,
+  //   // ETH is native, no contract address needed
+  //   contractAddresses: {},
+  // },
+  // {
+  //   name: "WETH",
+  //   logo: baseURL + "weth.png",
+  //   protocolTokenId: 3,
+  //   contractAddresses: {}, // Add later
+  // },
+  // {
+  //   name: "USDC",
+  //   logo: baseURL + "usdc.png",
+  //   protocolTokenId: 4,
+  //   contractAddresses: {}, // Add later
+  // },
+  // {
+  //   name: "PufETH",
+  //   logo: baseURL + "pufeth.png",
+  //   protocolTokenId: 5,
+  //   contractAddresses: {}, // Add later
+  // },
 ];
