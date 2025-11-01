@@ -27,12 +27,11 @@ export default function Navbar(props: { showWallet?: boolean; handleFocus?: () =
                                 <span className="hover:text-accent">FAQ’s</span>
                             </Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <Link href="bridge" passHref>
                                 <span className="hover:text-accent">Bridge</span>
                             </Link>
-                        </li>
-                        {/*<BridgeDialog/>*/}
+                        </li> */}
                         <li>
                             <Link href="#contact" passHref>
                                 <span className="hover:text-accent">Contact</span>
