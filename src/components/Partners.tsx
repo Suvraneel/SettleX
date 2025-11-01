@@ -16,6 +16,11 @@ const partnerLogos = [
     link: "https://union.build/?utm_source=settleX&utm_medium=partner&utm_campaign=SettleX",
   },
   {
+    name: "Concero",
+    src: "/brands/concero-logo-white.svg",
+    link: "https://concero.io/?utm_source=settleX&utm_medium=partner&utm_campaign=SettleX",
+  },
+  {
     name: "QuickNode",
     src: "/brands/quicknode-logo-white.svg",
     link: "https://www.quicknode.com/?utm_source=settleX&utm_medium=partner&utm_campaign=SettleX",
