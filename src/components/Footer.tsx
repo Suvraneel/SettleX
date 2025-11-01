@@ -9,13 +9,13 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="mt-16 px-6 md:px-12 lg:px-24 pt-10 pb-6">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
+    <footer className="mt-10 sm:mt-16 px-6 md:px-12 lg:px-24 pt-10 pb-6">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 sm:gap-8 md:gap-0">
         {/* Logo + Attribution */}
-        <div className="flex flex-col items-start justify-start text-xs font-light text-muted-foreground">
+        <div className="flex flex-col items-start justify-start text-xs sm:text-sm font-light text-muted-foreground">
           {/* Logo */}
           <Link href="/" passHref>
-            <div className="relative w-[100px] h-[100px]">
+            <div className="relative w-20 h-20 sm:w-24 sm:h-24">
               <Image
                 src="/SettleXClrInv.svg"
                 alt="SettleX Logo"
@@ -24,7 +24,7 @@ export default function Footer() {
               />
             </div>
           </Link>
-          <span className="inline-flex gap-3 items-center">
+          <span className="inline-flex gap-3 items-center mt-2">
             <h5>Backed by: </h5>
             <Link
               passHref
@@ -38,7 +38,8 @@ export default function Footer() {
                 alt={`QuickNode logo`}
                 width={100}
                 height={20}
-                className="object-contain"
+                sizes="(max-width: 640px) 88px, 100px"
+                className="object-contain h-5 w-auto sm:h-6"
               />
             </Link>
           </span>
@@ -49,23 +50,24 @@ export default function Footer() {
           </span>
         </div>
 
-        <div className="flex space-x-12 md:space-x-28 mt-6 md:mt-0 text-base font-light text-muted-foreground">
+        {/* Links */}
+        <div className="w-full md:w-auto grid grid-cols-2 gap-6 mt-2 md:mt-0 text-sm md:text-base font-light text-muted-foreground">
           {/* Useful Links */}
           <div>
-            <ul className="flex flex-col items-end justify-start space-y-3">
+            <ul className="flex flex-col items-start md:items-end justify-start space-y-2 md:space-y-3">
               <li>
                 <Link href="/docs" passHref>
-                  <span className="hover:text-accent">Docs</span>
+                  <span className="hover:text-accent py-1 inline-block">Docs</span>
                 </Link>
               </li>
               <li>
                 <Link href="/terms" passHref>
-                  <span className="hover:text-accent">Terms of Service</span>
+                  <span className="hover:text-accent py-1 inline-block">Terms of Service</span>
                 </Link>
               </li>
               <li>
                 <Link href="/privacy" passHref>
-                  <span className="hover:text-accent">Privacy Policy</span>
+                  <span className="hover:text-accent py-1 inline-block">Privacy Policy</span>
                 </Link>
               </li>
             </ul>
@@ -73,35 +75,41 @@ export default function Footer() {
 
           {/* Social Links */}
           <div>
-            <ul className="flex flex-col items-end justify-start space-y-3">
-              <li className="group hover:text-accent inline-flex items-center space-x-2">
-                <BrandX size={18} className="inline mr-1" />
+            <ul className="flex flex-col items-start md:items-end justify-start space-y-2 md:space-y-3">
+              <li>
                 <Link
                   href={"https://x.com/settleX_build"}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="SettleX on Twitter (X)"
+                  className="inline-flex items-center gap-2 hover:text-accent py-1"
                 >
-                  Twitter
+                  <BrandX size={18} className="inline" />
+                  <span>Twitter</span>
                 </Link>
               </li>
-              <li className="group hover:text-accent inline-flex items-center space-x-2">
-                <BrandLinkedin size={20} className="inline mr-1" />
+              <li>
                 <Link
                   href={"https://www.linkedin.com/company/settlex"}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="SettleX on LinkedIn"
+                  className="inline-flex items-center gap-2 hover:text-accent py-1"
                 >
-                  LinkedIn
+                  <BrandLinkedin size={20} className="inline" />
+                  <span>LinkedIn</span>
                 </Link>
               </li>
-              <li className="group hover:text-accent inline-flex items-center space-x-2">
-                <BrandGithub size={18} className="inline mr-1" />
+              <li>
                 <Link
                   href={"https://github.com/SettleX-Labs"}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="SettleX on GitHub"
+                  className="inline-flex items-center gap-2 hover:text-accent py-1"
                 >
-                  GitHub
+                  <BrandGithub size={18} className="inline" />
+                  <span>GitHub</span>
                 </Link>
               </li>
             </ul>
