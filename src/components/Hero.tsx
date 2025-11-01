@@ -9,9 +9,11 @@ import { Input } from "@components/ui/input";
 import { Bounce, toast } from "react-toastify";
 import Toaster from "@components/Toaster";
 
-export default function Hero(props: {
-  inputRef: RefObject<HTMLInputElement | null>;
-}) {
+export default function Hero(
+  props: Readonly<{
+    inputRef: RefObject<HTMLInputElement | null>;
+  }>
+) {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -127,54 +129,56 @@ export default function Hero(props: {
 
       <div className="relative pt-20 h-full w-full flex flex-col items-center text-center z-10">
         {/* Floating Icons */}
-        <div className="absolute -top-12 w-1/2 h-full pointer-events-none">
+        <div className="absolute -top-12 w-full md:w-1/2 h-full pointer-events-none">
           <Image
             src="/hero/floating-coin-3.svg"
             alt="Flow"
             width={110}
             height={120}
-            className="absolute top-32 left-[19rem] animate-float delay-1000"
+            className="absolute top-32 left-40 sm:left-[19rem] animate-float delay-1000 w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-28 lg:h-32"
           />
           <Image
             src="/hero/floating-coin-1.svg"
             alt="USDC"
             width={120}
             height={120}
-            className="absolute top-48 left-28 animate-float"
+            className="absolute top-48 left-10 sm:left-28 animate-float w-16 h-16 sm:w-16 sm:h-16 md:w-24 md:h-24 lg:w-32 lg:h-32"
           />
           <Image
             src="/hero/floating-coin-2.svg"
             alt="Doge"
             width={120}
             height={120}
-            className="absolute top-36 right-28 animate-float delay-2000"
+            className="absolute top-36 sm:top-36 right-20 sm:right-28 animate-float delay-2000 w-16 h-16 sm:w-16 sm:h-16 md:w-24 md:h-24 lg:w-32 lg:h-32"
           />
           <Image
             src="/hero/floating-coin-4.svg"
             alt="USDT"
             width={120}
             height={120}
-            className="absolute top-72 left-80 animate-float delay-3000"
+            className="absolute top-60 sm:top-72 left-40 sm:left-80 animate-float delay-3000 w-16 h-16 sm:w-14 sm:h-14 md:w-20 md:h-20 lg:w-32 lg:h-32"
           />
         </div>
       </div>
 
       {/* Hero CTA Section */}
-      <Parallax speed={-20} className="relative z-10">
-        <div className="relative mt-80 flex flex-col items-center justify-center">
+      <Parallax speed={-20} className="relative z-10 px-6">
+        <div className="relative mt-48 sm:mt-80 flex flex-col items-center justify-center">
           {/* Hero Text */}
           <h1 className="text-4xl md:text-6xl font-normal leading-tight max-w-xl text-foreground">
             The Settlement Layer for Crypto
           </h1>
           <p className="mt-4 font-light text-base max-w-2xl text-muted-foreground">
-            SettleX is the first confidential, compliant, chain-agnostic clearing and settlement layer for crypto assets, cutting cross-chain bridging and rebalancing costs by up to 90%
+            SettleX is the first confidential, compliant, chain-agnostic
+            clearing and settlement layer for crypto assets, cutting cross-chain
+            bridging and rebalancing costs by up to 90%
           </p>
 
           {/* Waitlist Form */}
           <form
             id="join-waitlist"
             onSubmit={handleSubmit}
-            className="mt-8 h-12 flex flex-col sm:flex-row items-center gap-2"
+            className="mt-8 w-full sm:w-auto flex flex-col sm:flex-row items-center gap-2"
             aria-labelledby="waitlist-form"
           >
             <Input
@@ -182,7 +186,7 @@ export default function Hero(props: {
               type="email"
               placeholder="yourname@gmail.com"
               aria-label="Email address"
-              className="w-64 sm:w-72 px-4 py-3 rounded-xl bg-input border border-border"
+              className="w-full sm:w-72 px-4 py-3 rounded-xl bg-input border border-border"
               id="email"
               required
               name="email"

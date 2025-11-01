@@ -19,26 +19,7 @@ export async function POST(request: Request) {
 
     const data = await res.json();
     console.log("AppScript response:", data);
-
-    if (data.status === "success") {
-      return NextResponse.json(
-        {
-          success: true,
-          message: data.message || "Data submitted successfully",
-          data,
-        },
-        { status: 200 }
-      );
-    } else {
-      return NextResponse.json(
-        {
-          success: false,
-          error: data.message || "AppScript returned an error",
-          data,
-        },
-        { status: 500 }
-      );
-    }
+    return NextResponse.json({ success: true, data }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
       { success: false, error: (error as Error).message },

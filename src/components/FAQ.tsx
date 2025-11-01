@@ -51,39 +51,37 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="relative w-full mt-4 py-16 px-6 md:px-12 lg:px-24 overflow-clip"
+      className="relative w-full mt-4 py-10 sm:py-16 px-6 md:px-12 lg:px-24 overflow-clip"
     >
       <div className="max-w-3xl mx-auto text-center">
-        <h2 className="text-3xl md:text-5xl font-normal leading-tight text-foreground">
+        <h2 className="text-2xl sm:text-3xl md:text-5xl font-normal leading-tight text-foreground">
           Frequently Asked Questions
         </h2>
-        <p className="mt-4 font-light text-base text-muted-foreground">
+        <p className="mt-2 sm:mt-4 font-light text-base text-muted-foreground">
           If you need to know about using SettleX features, compliance, or
           supported chains.
         </p>
       </div>
-      <>
-        <Image
-          src="/hero/floating-coin-1.svg"
-          alt="USDC"
-          width={150}
-          height={150}
-          className="absolute top-40 left-80 animate-float opacity-30 -z-10"
-        />
-        <Image
-          src="/hero/floating-coin-4.svg"
-          alt="USDT"
-          width={150}
-          height={150}
-          className="absolute top-96 -right-12 animate-float delay-3000 opacity-30"
-        />
-      </>
+      <Image
+        src="/hero/floating-coin-1.svg"
+        alt="USDC"
+        width={150}
+        height={150}
+        className="absolute top-40 sm:left-80 animate-float opacity-30 -z-10"
+      />
+      <Image
+        src="/hero/floating-coin-4.svg"
+        alt="USDT"
+        width={150}
+        height={150}
+        className="absolute top-96 -right-12 animate-float delay-3000 opacity-30 -z-10"
+      />
       <div className="mt-8 max-w-2xl mx-auto space-y-4">
         {faqList.map((item, idx) => (
           <Accordion
             type="single"
             collapsible
-            key={idx}
+            key={item.question.charAt(0)}
             className="bg-card rounded-xl"
           >
             <AccordionItem value={`item-${idx + 1}`}>
