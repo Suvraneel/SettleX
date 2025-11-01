@@ -106,7 +106,7 @@ export default function Hero(
   return (
     <section
       id="hero"
-      className="relative flex flex-col items-center text-center"
+      className="relative flex flex-col items-center text-center overflow-x-clip"
     >
       {/* Radial Blur Effect */}
       <div className="absolute -translate-y-1/2 inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(23,193,222,0.45)_0%,_transparent_80%)] blur-3xl z-0 scale-y-125 scale-x-75" />
@@ -114,7 +114,7 @@ export default function Hero(
       <div className="absolute -translate-y-1/2 inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(23,193,222,0.15)_0%,_transparent_30%)] blur-md z-[2] scale-y-150 scale-x-75" />
 
       {/* Rays */}
-      <div className="absolute -top-0 w-1/2 h-[50vh] pointer-events-none select-none z-[1]">
+      <div className="absolute -top-0 w-5/6 sm:w-1/2 sm:h-[50vh] pointer-events-none select-none -z-[1]">
         <Image
           src="/hero/Rays.svg"
           alt="Sunray"
