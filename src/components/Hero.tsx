@@ -225,32 +225,23 @@ export default function Hero(props: {
           </form>
         </div>
       </Parallax>
-      <>
-        <Image
-          src="/hero/floating-coin-1.svg"
-          alt="USDC"
-          width={150}
-          height={150}
-          className="absolute top-[100vh] -left-10 animate-float opacity-30"
-        />
-        <Image
-          src="/hero/floating-coin-4.svg"
-          alt="USDT"
-          width={150}
-          height={150}
-          className="absolute top-[150vh] right-10 animate-float delay-3000 opacity-30"
-        />
-      </>
-      <Parallax speed={50}>
+      <Image
+        src="/hero/floating-coin-1.svg"
+        alt="USDC"
+        width={150}
+        height={150}
+        className="absolute top-[100vh] -left-10 animate-float opacity-30"
+      />
+      <Image
+        src="/hero/floating-coin-4.svg"
+        alt="USDT"
+        width={150}
+        height={150}
+        className="absolute top-[150vh] right-10 animate-float delay-3000 opacity-30"
+      />
+      {/* <Parallax speed={50}>
         <div className="relative h-full w-full flex flex-col items-center text-center">
           <div className="w-2/3 mt-40 mb-52 flex flex-col items-center justify-center text-2xl font-normal flex-wrap text-wrap">
-            {/*SettleX
-                        is the first confidential settlement layer for stablecoins
-                        built to cut cross-chain costs and protect trading privacy. By bridging only
-                        the net difference of flows, it offers the most capital-efficient and private way
-                        for institutions like market makers and liquidity providers
-                        move stablecoins
-                        across chains.*/}
             SettleX is the first confidential clearing and settlement layer for
             stablecoins, <br /> built to optimize capital efficiency and privacy
             across chains. <br /> By bridging only the net difference of flows,
@@ -262,7 +253,7 @@ export default function Hero(props: {
             and privacy in cross-chain flows.
           </div>
         </div>
-      </Parallax>
+      </Parallax> */}
       <Toaster />
     </section>
   );
