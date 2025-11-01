@@ -59,7 +59,7 @@ function BentoCard(props: {
 export default function Features() {
     return (
         <section id="features"
-                 className="relative py-20 px-6 md:px-12 lg:px-24 bg-transparent flex flex-col justify-center items-center">
+                 className="relative mt-60 py-20 px-6 md:px-12 lg:px-24 bg-transparent flex flex-col justify-center items-center">
             <div className="max-w-4xl mx-auto text-center">
                 <h2 className="text-3xl md:text-5xl font-normal leading-tight text-foreground">What we’re Building</h2>
                 <p className="mt-4 font-light text-base text-muted-foreground">

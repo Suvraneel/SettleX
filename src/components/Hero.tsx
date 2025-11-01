@@ -160,7 +160,7 @@ export default function Hero(props: {
       </div>
 
       {/* Hero CTA Section */}
-      <Parallax speed={20} className="relative z-10">
+      <Parallax speed={-20} className="relative z-10">
         <div className="relative mt-80 -top-5 flex flex-col items-center justify-center">
           {/* Hero Text */}
           <h1 className="text-4xl md:text-6xl font-normal leading-tight max-w-xl text-foreground">
