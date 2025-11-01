@@ -161,15 +161,13 @@ export default function Hero(props: {
 
       {/* Hero CTA Section */}
       <Parallax speed={-20} className="relative z-10">
-        <div className="relative mt-80 -top-5 flex flex-col items-center justify-center">
+        <div className="relative mt-80 flex flex-col items-center justify-center">
           {/* Hero Text */}
           <h1 className="text-4xl md:text-6xl font-normal leading-tight max-w-xl text-foreground">
-            The Settlement Layer for Stablecoins
+            The Settlement Layer for Crypto
           </h1>
-          <p className="mt-4 font-light text-base max-w-xl text-muted-foreground">
-            SettleX is the first confidential clearing and settlement layer for
-            stablecoins, fully compliant, chain-agnostic, and built for
-            institutions.
+          <p className="mt-4 font-light text-base max-w-2xl text-muted-foreground">
+            SettleX is the first confidential, compliant, chain-agnostic clearing and settlement layer for crypto assets, cutting cross-chain bridging and rebalancing costs by up to 90%
           </p>
 
           {/* Waitlist Form */}
